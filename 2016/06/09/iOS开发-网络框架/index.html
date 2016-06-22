@@ -1,0 +1,380 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS开发-网络框架 | NiePlus博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Plus Nie">
+    
+    <meta name="description" content="网络框架（以下称NJAFNetworking）是基于AFNetworking框架的简单封装，基本功能包括POST请求，GET请求，上传文件，下载文件，网络状态，缓存等。
+为什么要使用NJAFNetworking？在使用AFNetworking的时候我们会发现对外开发接口比较多，当项目需求涉及到缓存，">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="NiePlus博客">NiePlus博客</a></h1>
+				<h2 class="blog-motto">不经一番彻寒骨，怎得梅花扑鼻香！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/06/09/iOS开发-网络框架/" title="iOS开发-网络框架" itemprop="url">iOS开发-网络框架</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="Plus Nie">Plus Nie</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-06-09T10:49:26.000Z" itemprop="datePublished">2016-06-09</time>
+    更新日期:<time datetime="2016-06-22T10:53:30.000Z" itemprop="dateModified">2016-06-22</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要使用NJAFNetworking？"><span class="toc-number">1.</span> <span class="toc-text">为什么要使用NJAFNetworking？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NJAFNetworking究竟是什么？"><span class="toc-number">2.</span> <span class="toc-text">NJAFNetworking究竟是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用NJAFNetworking？"><span class="toc-number">3.</span> <span class="toc-text">如何使用NJAFNetworking？</span></a></li></ol>
+		</div>
+		
+		<p>网络框架（以下称NJAFNetworking）是基于AFNetworking框架的简单封装，基本功能包括POST请求，GET请求，上传文件，下载文件，网络状态，缓存等。</p>
+<h2 id="为什么要使用NJAFNetworking？"><a href="#为什么要使用NJAFNetworking？" class="headerlink" title="为什么要使用NJAFNetworking？"></a>为什么要使用NJAFNetworking？</h2><p>在使用AFNetworking的时候我们会发现对外开发接口比较多，当项目需求涉及到缓存，以及网络判断的时候，我们都无从下手。然NJAFNetworking框架将这些过多的开发接口封装到一起，让我们使用起来更为方便。</p>
+<ul>
+<li>优点：<ul>
+<li>网络状态已经封装，在通过GET/POST请求会回调；</li>
+<li>缓存已经封装，当GET/POST请求失败后会回调；</li>
+<li>开发接口少，只需调用相应功能功能的接口即可。</li>
+</ul>
+</li>
+</ul>
+<h2 id="NJAFNetworking究竟是什么？"><a href="#NJAFNetworking究竟是什么？" class="headerlink" title="NJAFNetworking究竟是什么？"></a>NJAFNetworking究竟是什么？</h2><ul>
+<li><p>配置公共的请求头（可以不配置）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">        /**</span><br><span class="line">         *  配置公共的请求头，用于区分请求来源，需要与服务器约定好</span><br><span class="line">         *  @param httpHeaders      如@&#123;<span class="string">"client"</span> : <span class="string">"iOS"</span>&#125;</span><br><span class="line">         */</span><br><span class="line">        + (void)configCommonHttpHeaders:(NSDictionary *)httpHeaders;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新请求接口基础url（如果服务器地址有多个，可以不配置）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">        /**</span><br><span class="line">         *  更新请求接口基础url（如果服务器地址有多个）</span><br><span class="line">         *  @param baseUrl 请求接口基础url</span><br><span class="line">         */</span><br><span class="line">        + (void)updateBaseUrl:(NSString *)baseUrl;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>GET请求接口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">        /**</span><br><span class="line">         *  GET请求接口</span><br><span class="line">         *  @param url          访问地址路径，如/user/index/login</span><br><span class="line">         *  @param refreshCache 是否刷新缓存，YES</span><br><span class="line">         *  @param params       需要传的参数，如@&#123;@<span class="string">"user_id"</span> :@(80011)&#125;</span><br><span class="line">         *  @param progress     进度回调，</span><br><span class="line">         *  @param success      接口请求响应成功回调</span><br><span class="line">         *  @param fail         接口请求响应失败回调</span><br><span class="line">         *  @<span class="built_in">return</span>             NSURLSessionTask</span><br><span class="line">         */</span><br><span class="line">        + (NJURLSessionTask *)getWithUrl:(NSString *)url</span><br><span class="line">                            refreshCache:(BOOL)refreshCache</span><br><span class="line">                                  params:(NSDictionary *)params</span><br><span class="line">                                progress:(NJLoadProgress)progress</span><br><span class="line">                                 success:(NJResponseSuccess)success</span><br><span class="line">                                    fail:(NJResponseFail)fail;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>POST请求接口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">        /**</span><br><span class="line">         *  POST请求接口</span><br><span class="line">         *  @param url          访问地址路径，如/user/index/login</span><br><span class="line">         *  @param refreshCache 是否刷新缓存，YES</span><br><span class="line">         *  @param params       需要传的参数，如@&#123;@<span class="string">"user_id"</span> :@(80011)&#125;</span><br><span class="line">         *  @param progress     进度回调，</span><br><span class="line">         *  @param success      接口请求响应成功回调</span><br><span class="line">         *  @param fail         接口请求响应失败回调</span><br><span class="line">         *  @<span class="built_in">return</span>             NSURLSessionTask</span><br><span class="line">         */</span><br><span class="line">        + (NJURLSessionTask *)postWithUrl:(NSString *)url</span><br><span class="line">                             refreshCache:(BOOL)refreshCache</span><br><span class="line">                                   params:(NSDictionary *)params</span><br><span class="line">                                 progress:(NJLoadProgress)progress</span><br><span class="line">                                  success:(NJResponseSuccess)success</span><br><span class="line">                                     fail:(NJResponseFail)fail;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>图片上传接口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">        /**</span><br><span class="line">         *  图片上传接口</span><br><span class="line">         *  @param image        图片对象</span><br><span class="line">         *  @param url          上传图片路径，如/user/images</span><br><span class="line">         *  @param filename     文件名字，默认为当前时间yyyyMMddHHmmss.jpg</span><br><span class="line">         *  @param name         约定关联名称，如image</span><br><span class="line">         *  @param mimeType     默认iamge/jpeg</span><br><span class="line">         *  @param parameters   需要传的参数，如@&#123;@<span class="string">"user_id"</span> :@(80011)&#125;</span><br><span class="line">         *  @param progress     上传进度回调</span><br><span class="line">         *  @param success      上传成功回调</span><br><span class="line">         *  @param fail         上传失败回调</span><br><span class="line">         *  @<span class="built_in">return</span>             NSURLSessionTask</span><br><span class="line">         */</span><br><span class="line">        + (NJURLSessionTask *)uploadWithImage:(UIImage *)image</span><br><span class="line">                                          url:(NSString *)url</span><br><span class="line">                                     filename:(NSString *)filename</span><br><span class="line">                                         name:(NSString *)name</span><br><span class="line">                                     mimeType:(NSString *)mimeType</span><br><span class="line">                                   parameters:(NSDictionary *)parameters</span><br><span class="line">                                     progress:(NJLoadProgress)progress</span><br><span class="line">                                      success:(NJResponseSuccess)success</span><br><span class="line">                                         fail:(NJResponseFail)fail;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上传文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">        /**</span><br><span class="line">         *  上传文件</span><br><span class="line">         *  @param url              上传文件路径，如/user/images</span><br><span class="line">         *  @param uploadingFile    待上传文件路径，如/user/images</span><br><span class="line">         *  @param progress         进度回调</span><br><span class="line">         *  @param success          上传成功回调</span><br><span class="line">         *  @param fail             上传失败回调</span><br><span class="line">         *  @<span class="built_in">return</span>                 NSURLSessionTask</span><br><span class="line">         */</span><br><span class="line">        + (NJURLSessionTask *)uploadFileWithUrl:(NSString *)url</span><br><span class="line">                                  uploadingFile:(NSString *)uploadingFile</span><br><span class="line">                                       progress:(NJLoadProgress)progress</span><br><span class="line">                                        success:(NJResponseSuccess)success</span><br><span class="line">                                           fail:(NJResponseFail)fail;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">        /**</span><br><span class="line">         *  下载文件</span><br><span class="line">         *  @param url              下载文件URL</span><br><span class="line">         *  @param saveToPath       下载到那个路径下</span><br><span class="line">         *  @param progress         下载进度</span><br><span class="line">         *  @param success          下载成功后的回调</span><br><span class="line">         *  @param fail             下载失败后的回调</span><br><span class="line">         *  @<span class="built_in">return</span> NSURLSessionTask</span><br><span class="line">         */</span><br><span class="line">        + (NJURLSessionTask *)downloadWithUrl:(NSString *)url</span><br><span class="line">                                   saveToPath:(NSString *)saveToPath</span><br><span class="line">                                     progress:(NJLoadProgress)progress</span><br><span class="line">                                      success:(NJResponseSuccess)success</span><br><span class="line">                                         fail:(NJResponseFail)fail;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="如何使用NJAFNetworking？"><a href="#如何使用NJAFNetworking？" class="headerlink" title="如何使用NJAFNetworking？"></a>如何使用NJAFNetworking？</h2><ul>
+<li><p>NJAFNetworking支持CocoaPods(<a href="http://www.jianshu.com/p/e46d57ecc1f2" target="_blank" rel="external">CocoaPods是什么？</a>)<br>写在Podfile文件中，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">        <span class="built_in">source</span> <span class="string">'https://github.com/CocoaPods/Specs.git'</span></span><br><span class="line">        inhibit_all_warnings!</span><br><span class="line"></span><br><span class="line">        target <span class="string">"这里写你的工程名字"</span> <span class="keyword">do</span></span><br><span class="line">        pod <span class="string">'NJAFNetworking'</span>, <span class="string">'~&gt; 1.0.1'</span></span><br><span class="line">        end</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载NJAFNetworking（<a href="https://github.com/nfl404/NJAFNetworking" target="_blank" rel="external">下载地址</a>）<br>下载完后将NJAFNetworking文件夹拖入工程中即可。</p>
+</li>
+</ul>
+<p>结束。</p>
+<hr>
+<p>如果你觉得不错请支持下我<br><img src="http://upload-images.jianshu.io/upload_images/1290061-f554fa86a3cbd60c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="微信支持.png"><br>你们的支持也是我前进的动力,非常感谢支持!</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/网络框架/">网络框架</a><a href="/tags/AFNetworking/">AFNetworking</a><a href="/tags/iOS/">iOS</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2016/06/09/iOS开发-网络框架/" data-title="iOS开发-网络框架 | NiePlus博客" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/06/09/MarkDown语法/"  title="MarkDown语法">
+ <strong>NEXT:</strong><br/> 
+ <span>MarkDown语法
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要使用NJAFNetworking？"><span class="toc-number">1.</span> <span class="toc-text">为什么要使用NJAFNetworking？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NJAFNetworking究竟是什么？"><span class="toc-number">2.</span> <span class="toc-text">NJAFNetworking究竟是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用NJAFNetworking？"><span class="toc-number">3.</span> <span class="toc-text">如何使用NJAFNetworking？</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/AFNetworking/" title="AFNetworking">AFNetworking<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CocoaPods/" title="CocoaPods">CocoaPods<sup>3</sup></a></li>
+		
+			<li><a href="/tags/CocoaPods问题/" title="CocoaPods问题">CocoaPods问题<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Hybrid/" title="Hybrid">Hybrid<sup>2</sup></a></li>
+		
+			<li><a href="/tags/JSPath/" title="JSPath">JSPath<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MarkDown/" title="MarkDown">MarkDown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Native/" title="Native">Native<sup>3</sup></a></li>
+		
+			<li><a href="/tags/React/" title="React">React<sup>2</sup></a></li>
+		
+			<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git命令/" title="git命令">git命令<sup>1</sup></a></li>
+		
+			<li><a href="/tags/iOS/" title="iOS">iOS<sup>2</sup></a></li>
+		
+			<li><a href="/tags/动态库加载/" title="动态库加载">动态库加载<sup>1</sup></a></li>
+		
+			<li><a href="/tags/基础框架/" title="基础框架">基础框架<sup>1</sup></a></li>
+		
+			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
+		
+			<li><a href="/tags/网络框架/" title="网络框架">网络框架<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://yoursite.com" target="_blank" title="Plus Nie">Plus Nie</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"null"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79655948-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>
