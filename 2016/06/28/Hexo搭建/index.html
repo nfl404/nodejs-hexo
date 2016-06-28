@@ -1,0 +1,457 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo搭建 | NiePlus博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Plus Nie">
+    
+    <meta name="description" content="Hexo Hexo是一种快速的、简单的、强大的、静态的博客框架，开发环境基于Node . js，支持MarkDown，支持Github部署。了解更多hexo请到官网地址：Hexo官网 。
+
+友情提示：很多大神都在用哦！
+
+准备
+node.js（必须安装），下载安装地址到：nodejs官网。
+git（">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="NiePlus博客">NiePlus博客</a></h1>
+				<h2 class="blog-motto">不经一番彻寒骨，怎得梅花扑鼻香！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/06/28/Hexo搭建/" title="Hexo搭建" itemprop="url">Hexo搭建</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="Plus Nie">Plus Nie</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-06-28T09:11:04.000Z" itemprop="datePublished">2016-06-28</time>
+    更新日期:<time datetime="2016-06-28T09:36:46.000Z" itemprop="dateModified">2016-06-28</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo"><span class="toc-number">1.</span> <span class="toc-text">Hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备"><span class="toc-number">2.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装hexo"><span class="toc-number">3.</span> <span class="toc-text">安装hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo的使用"><span class="toc-number">4.</span> <span class="toc-text">Hexo的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录和文件"><span class="toc-number">4.1.</span> <span class="toc-text">目录和文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建新文章"><span class="toc-number">4.2.</span> <span class="toc-text">创建新文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署github"><span class="toc-number">5.</span> <span class="toc-text">部署github</span></a></li></ol>
+		</div>
+		
+		<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><p> Hexo是一种快速的、简单的、强大的、静态的博客框架，开发环境基于Node . js，支持MarkDown，支持Github部署。了解更多hexo请到官网地址：<a href="https://hexo.io/" target="_blank" rel="external">Hexo官网</a> 。</p>
+<ul>
+<li>友情提示：很多大神都在用哦！</li>
+</ul>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul>
+<li>node.js（必须安装），下载安装地址到：<a href="http://nodejs.cn/" target="_blank" rel="external">nodejs官网</a>。</li>
+<li>git（必须安装），mac下安装Xcode即可。</li>
+<li>github账号（必须申请），用于hexo服务管理部署。</li>
+</ul>
+<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><ul>
+<li><p>Hexo 安装，全局安装，加-g参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看hexo版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用hexo创建项目</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init nodejs-hexo</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1290061-cf754462a830effa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建hexo项目（部分截图）.png"></p>
+<ul>
+<li>启动Hexo服务器<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> nodejs-hexo</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1290061-8a9d164c90a4f3f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<ul>
+<li>浏览器打开地址<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:4000/</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1290061-50afc8e47e3e1e7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="默认的网页界面.png"></p>
+<h2 id="Hexo的使用"><a href="#Hexo的使用" class="headerlink" title="Hexo的使用"></a>Hexo的使用</h2><h3 id="目录和文件"><a href="#目录和文件" class="headerlink" title="目录和文件"></a>目录和文件</h3><p><img src="http://upload-images.jianshu.io/upload_images/1290061-ed16e5a761138db1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录和文件.png"></p>
+<ul>
+<li>.idea 没啥用</li>
+<li>node_modules</li>
+<li>scaffolds 模板工具</li>
+<li>source 存放博客正文内容<ul>
+<li>source/_drafts 草稿箱</li>
+<li>source/_posts 文件箱</li>
+</ul>
+</li>
+<li>themes 存放皮肤的目录<ul>
+<li>themes/landscape 默认的皮肤</li>
+</ul>
+</li>
+<li>_config.yml 全局的配置文件</li>
+<li>db.json 静态常量</li>
+</ul>
+<p>每次写文章是在_posts目录里操作，_config.yml文件和theme目录是第一次配置好就可以了。这里先主要介绍这三个文件的意义：</p>
+<ul>
+<li>_posts目录：Hexo是静态博客框架，没有数据库。所有的文章都已文件方式进行存储，就存在_posts目录下。Hexo集成了MarkDown，所有在写博客可以使用Markdown语法格式写博客。文件格式以.md形式存在，例如：hello-world.md。</li>
+<li>_themes目录：存放皮肤（博客样式），里面包含一套Javascript+CSS样式和基于EJS的模板设置。例如：themes目录下的landscape，这个是默认的皮肤。</li>
+<li>_config.yml是全局配置文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment"># Hexo Configuration</span></span><br><span class="line">        <span class="comment">## Docs: https://hexo.io/docs/configuration.html</span></span><br><span class="line">        <span class="comment">## Source: https://github.com/hexojs/hexo/</span></span><br><span class="line">            </span><br><span class="line">        <span class="comment"># Site 站点信息:定义标题,作者,语言</span></span><br><span class="line">        title: 这里是你博客的标题</span><br><span class="line">        subtitle: 不经一番彻寒骨，怎得梅花扑鼻香！</span><br><span class="line">        description: blog.fens.me</span><br><span class="line">        author: 笔名</span><br><span class="line">        language: zh_CN</span><br><span class="line">        timezone:</span><br><span class="line">            </span><br><span class="line">        <span class="comment"># URL Url访问路径</span></span><br><span class="line">        <span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line">        url: http://yoursite.com</span><br><span class="line">        root: /</span><br><span class="line">        permalink: :year/:month/:day/:title/</span><br><span class="line">        permalink_defaults:</span><br><span class="line">            </span><br><span class="line">        <span class="comment"># Directory 文件目录:正文的存储目录</span></span><br><span class="line">        <span class="built_in">source</span>_dir: <span class="built_in">source</span></span><br><span class="line">        public_dir: public</span><br><span class="line">        tag_dir: tags</span><br><span class="line">        archive_dir: archives</span><br><span class="line">        category_dir: categories</span><br><span class="line">        code_dir: downloads/code</span><br><span class="line">        i18n_dir: :lang</span><br><span class="line">        skip_render:</span><br><span class="line">            </span><br><span class="line">        <span class="comment"># Writing 写博客配置:文章标题,文章类型,外部链接</span></span><br><span class="line">        new_post_name: :title.md <span class="comment"># File name of new posts</span></span><br><span class="line">        default_layout: post</span><br><span class="line">        titlecase: <span class="literal">false</span> <span class="comment"># Transform title into titlecase</span></span><br><span class="line">        external_link: <span class="literal">true</span> <span class="comment"># Open external links in new tab</span></span><br><span class="line">        filename_<span class="keyword">case</span>: 0</span><br><span class="line">        render_drafts: <span class="literal">false</span></span><br><span class="line">        post_asset_folder: <span class="literal">false</span></span><br><span class="line">        relative_link: <span class="literal">false</span></span><br><span class="line">        future: <span class="literal">true</span></span><br><span class="line">        highlight:</span><br><span class="line">        <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">        line_number: <span class="literal">true</span></span><br><span class="line">        auto_detect: <span class="literal">false</span></span><br><span class="line">        tab_replace:</span><br><span class="line">            </span><br><span class="line">        <span class="comment"># Category &amp; Tag   目录和标签:默认分类,分类图,标签图</span></span><br><span class="line">        default_category: uncategorized</span><br><span class="line">        category_map:</span><br><span class="line">        tag_map:</span><br><span class="line">            </span><br><span class="line">        <span class="comment"># Date / Time format 时间和日期格式:</span></span><br><span class="line">        <span class="comment">## Hexo uses Moment.js to parse and display date</span></span><br><span class="line">        <span class="comment">## You can customize the date format as defined in</span></span><br><span class="line">        <span class="comment">## http://momentjs.com/docs/#/displaying/format/</span></span><br><span class="line">        date_format: YYYY-MM-DD</span><br><span class="line">        time_format: HH:mm:ss</span><br><span class="line">            </span><br><span class="line">        <span class="comment"># Pagination   分页设置:每页显示数量</span></span><br><span class="line">        <span class="comment">## Set per_page to 0 to disable pagination</span></span><br><span class="line">        per_page: 10</span><br><span class="line">        pagination_dir: page</span><br><span class="line">            </span><br><span class="line">        <span class="comment"># Extensions   插件和皮肤:换皮肤,安装插件</span></span><br><span class="line">        <span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line">        <span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line">        theme: landscape</span><br><span class="line">            </span><br><span class="line">        <span class="comment"># Deployment   部署配置:github发布,type类型为git</span></span><br><span class="line">        <span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line">        deploy:</span><br><span class="line">        <span class="built_in">type</span>:</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h3><p>接下来我来开始创建博客的第一篇文章，可以通过hexo命令创建，也可以在_posts文件目录下创建。</p>
+<ul>
+<li>通过命令行创建<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new 新的一天</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1290061-0caa294f89b2dc98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="新的一天截图.png"></p>
+<ul>
+<li><p>在_posts目录下<br><img src="http://upload-images.jianshu.io/upload_images/1290061-e1ff352b53191a50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+</li>
+<li><p>这里我们可以用Markdown语法写文章，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">        ---</span><br><span class="line">        title: 新的一天</span><br><span class="line">        date: 2016-06-28 15:20:20</span><br><span class="line">        tags:</span><br><span class="line">        - 第一天</span><br><span class="line">        - 日记</span><br><span class="line">        ---</span><br><span class="line">        </span><br><span class="line">        这是**新的一天**，我用hexo创建了第一篇文章。</span><br><span class="line"> </span><br><span class="line">        </span><br><span class="line">        感觉非常好。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在命令行，启动hexo服务器，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">        laoniede-MacBook-Pro:my_hexo xuxianmei$ hexo server</span><br><span class="line">        INFO  Start processing</span><br><span class="line">        INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在浏览器打开，<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1290061-fe97f68436d5db8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="新的修改.png"></p>
+<h2 id="部署github"><a href="#部署github" class="headerlink" title="部署github"></a>部署github</h2><ul>
+<li>静态化处理  （将文件转换成html，javascript，css）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1290061-bae2a629853cf27a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="静态化处理.png"></p>
+<ul>
+<li><p>发布到github<br>在github中创建my_hexo项目，项目地址：<a href="https://github.com/nfl404/my_hexo" target="_blank" rel="external">https://github.com/nfl404/my_hexo</a> 。配置全局文件_config.yml，找到deploy部分，修改,</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">        deploy:</span><br><span class="line">          repo: git@github.com:nfl404/my_hexo.git</span><br><span class="line">          <span class="built_in">type</span>: git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后，通过命令部署，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1290061-162b784522cbd01d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="保存hexo-deployer-git.png"><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1290061-712b8a415b3d3149.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="部署hexo.png"></p>
+<ul>
+<li>静态网站就被部署到了github上，<br><img src="http://upload-images.jianshu.io/upload_images/1290061-31732ac45a4566aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></li>
+<li><p>点击项目的Settings，找到Github Pages，打开网页<a href="https://nfl404.github.io/my_hexo/" target="_blank" rel="external">https://nfl404.github.io/my_hexo/</a>，就是刚刚发布的站点。<br><img src="http://upload-images.jianshu.io/upload_images/1290061-75f30c391d676c58.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="站点显示内容.png"></p>
+</li>
+<li><p>设置域名<br>我们可以看到访问通过部署github上的站点，和我们在本地浏览的样式不一样，原因是因站点访问的css和js的加载路径不对，我们绑定好域名后就可以正常显示了。域名注册可以在<a href="https://www.baidu.com/s?wd=%E6%96%B0%E7%BD%91&amp;rsv_spt=1&amp;rsv_iqid=0xaf09323c00097313&amp;issp=1&amp;f=8&amp;rsv_bp=0&amp;rsv_idx=2&amp;ie=utf-8&amp;tn=baiduhome_pg&amp;rsv_enter=1&amp;rsv_sug3=8&amp;rsv_sug1=7&amp;rsv_sug7=100&amp;rsv_t=d457rL19H7UESm5ejhoBL%2Bo%2BRnv4uOhWvZvBvXXTeo6xqNGpx%2FaUPoaIRm3fB8bXh9n%2B" target="_blank" rel="external">万网</a>或<a href="http://www.xinnet.com/?utm_source=pc&amp;utm_medium=pz&amp;utm_term=%E6%A0%87%E9%A2%98&amp;utm_content=%E6%A0%87%E9%A2%98&amp;utm_campaign=%E6%A0%87%E9%A2%98%E6%8F%8F%E8%BF%B0" target="_blank" rel="external">新网</a>注册，或者其他。<br>域名注册成功后，我们开始解析域名，并且配置DNS。这个地方会有一些坑，下说下本人注册的域名是在<a href="https://www.baidu.com/s?wd=%E6%96%B0%E7%BD%91&amp;rsv_spt=1&amp;rsv_iqid=0xaf09323c00097313&amp;issp=1&amp;f=8&amp;rsv_bp=0&amp;rsv_idx=2&amp;ie=utf-8&amp;tn=baiduhome_pg&amp;rsv_enter=1&amp;rsv_sug3=8&amp;rsv_sug1=7&amp;rsv_sug7=100&amp;rsv_t=d457rL19H7UESm5ejhoBL%2Bo%2BRnv4uOhWvZvBvXXTeo6xqNGpx%2FaUPoaIRm3fB8bXh9n%2B" target="_blank" rel="external">万网</a>注册的，解析是在<a href="https://www.dnspod.cn/" target="_blank" rel="external">DNSPod</a>解析的，为什么不在<a href="https://www.baidu.com/s?wd=%E6%96%B0%E7%BD%91&amp;rsv_spt=1&amp;rsv_iqid=0xaf09323c00097313&amp;issp=1&amp;f=8&amp;rsv_bp=0&amp;rsv_idx=2&amp;ie=utf-8&amp;tn=baiduhome_pg&amp;rsv_enter=1&amp;rsv_sug3=8&amp;rsv_sug1=7&amp;rsv_sug7=100&amp;rsv_t=d457rL19H7UESm5ejhoBL%2Bo%2BRnv4uOhWvZvBvXXTeo6xqNGpx%2FaUPoaIRm3fB8bXh9n%2B" target="_blank" rel="external">万网</a>解析，那就是因为万网解析遇到了太多坑。<br>添加域名，注册登录<a href="https://www.dnspod.cn/" target="_blank" rel="external">DNSPod</a>，选择域名解析-&gt;添加域名<br><img src="http://upload-images.jianshu.io/upload_images/1290061-2ee858a1a37a9fd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DNSPod域名添加.png"></p>
+</li>
+<li>登录<a href="https://www.baidu.com/s?wd=%E6%96%B0%E7%BD%91&amp;rsv_spt=1&amp;rsv_iqid=0xaf09323c00097313&amp;issp=1&amp;f=8&amp;rsv_bp=0&amp;rsv_idx=2&amp;ie=utf-8&amp;tn=baiduhome_pg&amp;rsv_enter=1&amp;rsv_sug3=8&amp;rsv_sug1=7&amp;rsv_sug7=100&amp;rsv_t=d457rL19H7UESm5ejhoBL%2Bo%2BRnv4uOhWvZvBvXXTeo6xqNGpx%2FaUPoaIRm3fB8bXh9n%2B" target="_blank" rel="external">万网</a>访问域名控制平台，修改DNS如下<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f1g1ns1.dnspod.net </span><br><span class="line">f1g1ns2.dnspod.net</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1290061-b4268b9769e15c6c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="万网修改DNS.png"><br>在DNSPod添加记录，设置主机记录，填写记录值（主机ip地址，<a href="http://jingyan.baidu.com/article/ab0b5630a952ccc15afa7d24.html" target="_blank" rel="external">如何获取ip地址</a>，注意：如ip地址设有防火墙，请尝试其他地址），主机记录可以添加@和www两种即可。添加好后，点击开始解析。<br><img src="http://upload-images.jianshu.io/upload_images/1290061-67863ba489a5f227.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>最后，在github中创建一个CNAME的文件，文件中写出你要绑定的域名如<a href="www.niefuling.com">niefuling.com</a><br><img src="http://upload-images.jianshu.io/upload_images/1290061-d7e337793998ee80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CNANME添加域名.png"><br>查看项目Settings查看GitHub Pages，观察站点地址变化（注意：如果没有变化，原因是修改了DNS，DNS生效需要在48小时内完成），正确显示如下，<br><img src="http://upload-images.jianshu.io/upload_images/1290061-7ad102e8caa35e09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="站点地址变化.png"><br>通过浏览器访问<a href="http://niefuling.com" target="_blank" rel="external">http://niefuling.com</a> ，既可以看到你自己的博客了。<br><img src="http://upload-images.jianshu.io/upload_images/1290061-eb3299d5f3f6de07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="NiePlus的博客.png"></p>
+<p>结束。</p>
+<p>如有什么问题，可以在我的博客留言，<a href="http://niefuling.com/" target="_blank" rel="external">点击这里</a>。</p>
+<hr>
+<p>你们的支持也是我前进的动力，非常感谢支持！</p>
+<p>相关资料</p>
+<ul>
+<li><a href="https://segmentfault.com/a/1190000000370778" target="_blank" rel="external">hexo —— 简单、快速、强大的Node.js静态博客框架</a></li>
+<li><a href="http://blog.fens.me/hexo-blog-github/" target="_blank" rel="external">Hexo在github上构建免费的Web应用</a></li>
+<li><a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="external">HEXO+Github,搭建属于自己的博客</a></li>
+<li><a href="http://www.jianshu.com/p/e2a415612bc4" target="_blank" rel="external">Hexo博客</a></li>
+<li><a href="http://www.jianshu.com/p/98ace695bdc4" target="_blank" rel="external">hexo安装</a></li>
+<li><a href="https://hexo.io/zh-cn/" target="_blank" rel="external">Hexo官网</a></li>
+<li><a href="http://www.jianshu.com/p/5e0ca2b14815" target="_blank" rel="external">升级hexo碰到“Deployer not found”问题及解决</a></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Hexo/">Hexo</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2016/06/28/Hexo搭建/" data-title="Hexo搭建 | NiePlus博客" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/06/27/CocoaPods高级使用—发布代码/"  title="CocoaPods高级使用—发布代码">
+ <strong>NEXT:</strong><br/> 
+ <span>CocoaPods高级使用—发布代码
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo"><span class="toc-number">1.</span> <span class="toc-text">Hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备"><span class="toc-number">2.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装hexo"><span class="toc-number">3.</span> <span class="toc-text">安装hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo的使用"><span class="toc-number">4.</span> <span class="toc-text">Hexo的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录和文件"><span class="toc-number">4.1.</span> <span class="toc-text">目录和文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建新文章"><span class="toc-number">4.2.</span> <span class="toc-text">创建新文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署github"><span class="toc-number">5.</span> <span class="toc-text">部署github</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/AFNetworking/" title="AFNetworking">AFNetworking<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CocoaPods/" title="CocoaPods">CocoaPods<sup>4</sup></a></li>
+		
+			<li><a href="/tags/CocoaPods问题/" title="CocoaPods问题">CocoaPods问题<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Hybrid/" title="Hybrid">Hybrid<sup>2</sup></a></li>
+		
+			<li><a href="/tags/JSPath/" title="JSPath">JSPath<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MarkDown/" title="MarkDown">MarkDown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Native/" title="Native">Native<sup>3</sup></a></li>
+		
+			<li><a href="/tags/React/" title="React">React<sup>2</sup></a></li>
+		
+			<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git命令/" title="git命令">git命令<sup>1</sup></a></li>
+		
+			<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
+		
+			<li><a href="/tags/动态库加载/" title="动态库加载">动态库加载<sup>1</sup></a></li>
+		
+			<li><a href="/tags/基础框架/" title="基础框架">基础框架<sup>1</sup></a></li>
+		
+			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
+		
+			<li><a href="/tags/网络框架/" title="网络框架">网络框架<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://yoursite.com" target="_blank" title="Plus Nie">Plus Nie</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"null"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79655948-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>
