@@ -14,22 +14,23 @@ iOS 开发 git环境搭建，只需下载Xcode成功后git环境就搭建好了�
 
 git常用命令
 创建远程仓库
-1git --bare
+git --bare
 
 clone仓库
-1git clone 仓库地址
+git clone 仓库地址
 
 添加.gitignore
-1touch .gitignore
+touch .gitignore
 
 查看状态
-1git status
-">
+git status
+
+查看分">
     
     
     
     
-    <link rel="alternate" href="http://www.weibo.com/2661020721/profile?topnav=1&wvr=6&is_all=1" title="NiePlus博客" type="application/atom+xml">
+    <link rel="alternate" href="http://weibo.com/niefuling" title="NiePlus博客" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon.ico">
@@ -103,86 +104,86 @@ clone仓库
 </ul>
 <h2 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h2><ul>
 <li><p>创建远程仓库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --bare</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git --bare</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>clone仓库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> 仓库地址</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> 仓库地址</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>添加.gitignore</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch .gitignore</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">touch .gitignore</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看分之</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch －a</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch －a</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>切换master分之</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>添加修改内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>提交修改内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">"这里写提交内容的注释"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">"这里写提交内容的注释"</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>拉取master主分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>合并分支，如果你在master，想把dev分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  merge dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git  merge dev</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>推送到master分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>创建dev分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch dev</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>提交本地dev分支作为远程的master分之</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin dev:master</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin dev:master</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>更新远程分之道本地</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git fetch</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看历史版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看简化的历史版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>回退当前版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git  reset --hard 或 git reset --hard HEAD</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git  reset --hard 或 git reset --hard HEAD</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>回退到指定的版本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 版本号前7位</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reset --hard 版本号前7位</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="git-不常用命令"><a href="#git-不常用命令" class="headerlink" title="git 不常用命令"></a>git 不常用命令</h2><ul>
 <li><p>添加tag(解释下tag,给分之打上tag后,不能轻易改动)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git tag <span class="string">'1.0.0'</span></span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git tag <span class="string">'1.0.0'</span></span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>删除tag1.0.0</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push origin :refs/tags/1.0.0</span><br><span class="line">或者</span><br><span class="line">git tag <span class="_">-d</span> 1.0.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin :refs/tags/1.0.0</span><br><span class="line">或者</span><br><span class="line">git tag <span class="_">-d</span> 1.0.0</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>删除dev(dev是分支的名字)分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push origin :dev</span><br><span class="line">或者</span><br><span class="line">git branch -r <span class="_">-d</span> origin/dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git push origin :dev</span><br><span class="line">或者</span><br><span class="line">git branch -r <span class="_">-d</span> origin/dev</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="git-生成SSH-Key密钥"><a href="#git-生成SSH-Key密钥" class="headerlink" title="git 生成SSH Key密钥"></a>git 生成SSH Key密钥</h2><ul>
 <li><p>配置Git的user name 和email</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config -- global user.name <span class="string">"nieplus"</span></span><br><span class="line">git config -- global user.email <span class="string">"nieplus@163.com"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config -- global user.name <span class="string">"nieplus"</span></span><br><span class="line">git config -- global user.email <span class="string">"nieplus@163.com"</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看是否有SSH密钥</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>生成SSH密钥</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SSH-keygen - t rsa -C <span class="string">"nieplus@163.com"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SSH-keygen - t rsa -C <span class="string">"nieplus@163.com"</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>添加密钥</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add 文件名</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-add 文件名</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>如果已有秘钥，查看</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>技术交流群：193996724</p>
@@ -218,6 +219,14 @@ clone仓库
 </a>
 </div>
 
+
+<div class="next">
+<a href="/2015/10/14/Xcode7及iOS9更新遇到的一些问题/"  title="Xcode7及iOS9更新遇到的一些问题">
+ <strong>NEXT:</strong><br/> 
+ <span>Xcode7及iOS9更新遇到的一些问题
+</span>
+</a>
+</div>
 
 </nav>
 
@@ -260,6 +269,8 @@ clone仓库
 		
 			<li><a href="/tags/MarkDown/" title="MarkDown">MarkDown<sup>1</sup></a></li>
 		
+			<li><a href="/tags/NSString/" title="NSString">NSString<sup>1</sup></a></li>
+		
 			<li><a href="/tags/Native/" title="Native">Native<sup>3</sup></a></li>
 		
 			<li><a href="/tags/React/" title="React">React<sup>2</sup></a></li>
@@ -268,22 +279,28 @@ clone仓库
 		
 			<li><a href="/tags/git命令/" title="git命令">git命令<sup>1</sup></a></li>
 		
-			<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
+			<li><a href="/tags/iOS/" title="iOS">iOS<sup>4</sup></a></li>
+		
+			<li><a href="/tags/iOS9更新问题/" title="iOS9更新问题">iOS9更新问题<sup>1</sup></a></li>
 		
 			<li><a href="/tags/动态库加载/" title="动态库加载">动态库加载<sup>1</sup></a></li>
 		
 			<li><a href="/tags/基础框架/" title="基础框架">基础框架<sup>1</sup></a></li>
 		
-			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
+			<li><a href="/tags/开发账号/" title="开发账号">开发账号<sup>1</sup></a></li>
 		
-			<li><a href="/tags/网络框架/" title="网络框架">网络框架<sup>1</sup></a></li>
+			<li><a href="/tags/成员变量/" title="成员变量">成员变量<sup>1</sup></a></li>
+		
+			<li><a href="/tags/方法/" title="方法">方法<sup>1</sup></a></li>
+		
+			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
 		
 		</ul>
 </div>
 
 
   <div class="rsspart">
-	<a href="http://www.weibo.com/2661020721/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" title="rss">RSS 订阅</a>
+	<a href="http://weibo.com/niefuling" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>

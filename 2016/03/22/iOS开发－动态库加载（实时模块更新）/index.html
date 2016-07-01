@@ -16,7 +16,7 @@
     
     
     
-    <link rel="alternate" href="http://www.weibo.com/2661020721/profile?topnav=1&wvr=6&is_all=1" title="NiePlus博客" type="application/atom+xml">
+    <link rel="alternate" href="http://weibo.com/niefuling" title="NiePlus博客" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon.ico">
@@ -102,13 +102,13 @@
 <h3 id="动态库创建"><a href="#动态库创建" class="headerlink" title="动态库创建"></a>动态库创建</h3><ul>
 <li>创建工程类型为Framework &amp; Library 下的Cocoa Touch Framework工程，工程命名DynamicLink;</li>
 <li><p>创建继承UIViewController命名为ViewController的控制器，设置背景颜色；</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 动态库视图颜色</span><br><span class="line">self.view.backgroundColor = [UIColor greenColor];</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 动态库视图颜色</span><br><span class="line">self.view.backgroundColor = [UIColor greenColor];</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>创建继承NSObject命名为DynamicOpenMenth文件，在DynamicOpenMenth.h中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 动态链对外开发方法</span><br><span class="line"> - (void)startWithObject:(id)object withBundle:(NSBundle *)bundle;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 动态链对外开发方法</span><br><span class="line"> - (void)startWithObject:(id)object withBundle:(NSBundle *)bundle;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在DynamicOpenMenth.m中方法实现</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">- (void)startWithObject:(id)object withBundle:(NSBundle *)bundle</span><br><span class="line">&#123;</span><br><span class="line">     初始化第一个controller</span><br><span class="line">     这里的重点是资源文件的加载,通常我们在初始化的时候并不是很在意bundle:这个参数，</span><br><span class="line">     其实我们所用到的图片、xib等资源文件都是在程序内部中获取的，也就是我们常用的[NSBundle mainBundle]中获取，</span><br><span class="line">     所谓的NSBundle本质上就是一个路径，mainBundle指向的是.app下。</span><br><span class="line">     而如果我们不指定bundle，则会默认从.app路径下去寻找资源。</span><br><span class="line">     不过很显然，我们的动态库是放到“主程序”的document文件下的，所以资源文件是不可能在[NSbundle mainBundle]中获取到的，</span><br><span class="line">     所以这里我们需要指定bundle参数，这也是传递framework的路径的意义所在</span><br><span class="line">  */</span><br><span class="line">  ViewController *vc = [[ViewController alloc] init];</span><br><span class="line">  vc.root_bundle = bundle;</span><br><span class="line">  //转换传递过来的mainCon参数，实现界面跳转</span><br><span class="line">  UIViewController *viewCon = (UIViewController *)object;</span><br><span class="line">  [viewCon presentViewController:vc animated:YES completion:^&#123;</span><br><span class="line">      NSLog(@<span class="string">"跳转到动态更新模块成功!"</span>);</span><br><span class="line">  &#125;];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">- (void)startWithObject:(id)object withBundle:(NSBundle *)bundle</span><br><span class="line">&#123;</span><br><span class="line">     初始化第一个controller</span><br><span class="line">     这里的重点是资源文件的加载,通常我们在初始化的时候并不是很在意bundle:这个参数，</span><br><span class="line">     其实我们所用到的图片、xib等资源文件都是在程序内部中获取的，也就是我们常用的[NSBundle mainBundle]中获取，</span><br><span class="line">     所谓的NSBundle本质上就是一个路径，mainBundle指向的是.app下。</span><br><span class="line">     而如果我们不指定bundle，则会默认从.app路径下去寻找资源。</span><br><span class="line">     不过很显然，我们的动态库是放到“主程序”的document文件下的，所以资源文件是不可能在[NSbundle mainBundle]中获取到的，</span><br><span class="line">     所以这里我们需要指定bundle参数，这也是传递framework的路径的意义所在</span><br><span class="line">  */</span><br><span class="line">  ViewController *vc = [[ViewController alloc] init];</span><br><span class="line">  vc.root_bundle = bundle;</span><br><span class="line">  //转换传递过来的mainCon参数，实现界面跳转</span><br><span class="line">  UIViewController *viewCon = (UIViewController *)object;</span><br><span class="line">  [viewCon presentViewController:vc animated:YES completion:^&#123;</span><br><span class="line">      NSLog(@<span class="string">"跳转到动态更新模块成功!"</span>);</span><br><span class="line">  &#125;];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在Build Only Device下编译程序，生成DynamicLink.Framework文件，文件可在工程目录下Products文件夹下Show In Finder中找到；</p>
 </li>
@@ -116,7 +116,7 @@
 <h3 id="主工程创建"><a href="#主工程创建" class="headerlink" title="主工程创建"></a>主工程创建</h3><p>创建Single View Application的工程，命名为DynamicLibrary。</p>
 <ul>
 <li><p>在ViewController.m中实现以下方法</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event</span><br><span class="line">&#123;</span><br><span class="line">  // 动态库测试</span><br><span class="line">  [self performSelector:@selector(dynamicLibraryClick) withObject:nil];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)dynamicLibraryClick</span><br><span class="line">&#123;</span><br><span class="line">  // document路径</span><br><span class="line">  NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);</span><br><span class="line">  NSString *documentDirectory = nil;</span><br><span class="line">  <span class="keyword">if</span> ([paths count] != 0)</span><br><span class="line">      documentDirectory = [paths objectAtIndex:0];</span><br><span class="line">  NSLog(@<span class="string">"\nDocuments 路径 = %@\n"</span>,documentDirectory);</span><br><span class="line">  //拼接我们放到document中的framework路径</span><br><span class="line">  NSString *libName = @<span class="string">"DynamicLink.framework"</span>;</span><br><span class="line">  NSString *destLibPath = [documentDirectory stringByAppendingPathComponent:libName];</span><br><span class="line"></span><br><span class="line">  //判断一下有没有这个文件的存在　如果没有直接跳出</span><br><span class="line">  NSFileManager *manager = [NSFileManager defaultManager];</span><br><span class="line">  <span class="keyword">if</span> (![manager fileExistsAtPath:destLibPath]) &#123;</span><br><span class="line">      NSLog(@<span class="string">"There isn't have the file"</span>);</span><br><span class="line">      <span class="built_in">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  //复制到程序中</span><br><span class="line">  NSError *error = nil;</span><br><span class="line"></span><br><span class="line">  //加载方式二：使用NSBundle加载动态库</span><br><span class="line">  NSBundle *frameworkBundle = [NSBundle bundleWithPath:destLibPath];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (frameworkBundle) &#123;</span><br><span class="line">      NSLog(@<span class="string">"bundle load framework success."</span>);</span><br><span class="line">  &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      NSLog(@<span class="string">"bundle load framework err:%@"</span>,error);</span><br><span class="line">      <span class="built_in">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  //通过NSClassFromString方式读取类,FrameWorkStart为动态库中入口类</span><br><span class="line">  Class pacteraClass = NSClassFromString(@<span class="string">"DynamicOpenMenth"</span>);</span><br><span class="line">  <span class="keyword">if</span> (!pacteraClass) &#123;</span><br><span class="line">      NSLog(@<span class="string">"Unable to get TestDylib class"</span>);</span><br><span class="line">      <span class="built_in">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 1.初始化方式采用下面的形式,alloc　init的形式是行不通的,同样，直接使用PacteraFramework类初始化也是不正确的</span><br><span class="line">  // 2.通过- (id)performSelector:(SEL)aSelector withObject:(id)object1 withObject:(id)object2;</span><br><span class="line">  // 3.方法调用入口方法（startWithObject:withBundle:），并传递参数（withObject:self withObject:frameworkBundle）</span><br><span class="line"></span><br><span class="line">  NSObject *pacteraObject = [pacteraClass new];</span><br><span class="line">  [pacteraObject performSelector:@selector(startWithObject:withBundle:) withObject:self withObject:frameworkBundle];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event</span><br><span class="line">&#123;</span><br><span class="line">  // 动态库测试</span><br><span class="line">  [self performSelector:@selector(dynamicLibraryClick) withObject:nil];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)dynamicLibraryClick</span><br><span class="line">&#123;</span><br><span class="line">  // document路径</span><br><span class="line">  NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);</span><br><span class="line">  NSString *documentDirectory = nil;</span><br><span class="line">  <span class="keyword">if</span> ([paths count] != 0)</span><br><span class="line">      documentDirectory = [paths objectAtIndex:0];</span><br><span class="line">  NSLog(@<span class="string">"\nDocuments 路径 = %@\n"</span>,documentDirectory);</span><br><span class="line">  //拼接我们放到document中的framework路径</span><br><span class="line">  NSString *libName = @<span class="string">"DynamicLink.framework"</span>;</span><br><span class="line">  NSString *destLibPath = [documentDirectory stringByAppendingPathComponent:libName];</span><br><span class="line"></span><br><span class="line">  //判断一下有没有这个文件的存在　如果没有直接跳出</span><br><span class="line">  NSFileManager *manager = [NSFileManager defaultManager];</span><br><span class="line">  <span class="keyword">if</span> (![manager fileExistsAtPath:destLibPath]) &#123;</span><br><span class="line">      NSLog(@<span class="string">"There isn't have the file"</span>);</span><br><span class="line">      <span class="built_in">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  //复制到程序中</span><br><span class="line">  NSError *error = nil;</span><br><span class="line"></span><br><span class="line">  //加载方式二：使用NSBundle加载动态库</span><br><span class="line">  NSBundle *frameworkBundle = [NSBundle bundleWithPath:destLibPath];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (frameworkBundle) &#123;</span><br><span class="line">      NSLog(@<span class="string">"bundle load framework success."</span>);</span><br><span class="line">  &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      NSLog(@<span class="string">"bundle load framework err:%@"</span>,error);</span><br><span class="line">      <span class="built_in">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  //通过NSClassFromString方式读取类,FrameWorkStart为动态库中入口类</span><br><span class="line">  Class pacteraClass = NSClassFromString(@<span class="string">"DynamicOpenMenth"</span>);</span><br><span class="line">  <span class="keyword">if</span> (!pacteraClass) &#123;</span><br><span class="line">      NSLog(@<span class="string">"Unable to get TestDylib class"</span>);</span><br><span class="line">      <span class="built_in">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 1.初始化方式采用下面的形式,alloc　init的形式是行不通的,同样，直接使用PacteraFramework类初始化也是不正确的</span><br><span class="line">  // 2.通过- (id)performSelector:(SEL)aSelector withObject:(id)object1 withObject:(id)object2;</span><br><span class="line">  // 3.方法调用入口方法（startWithObject:withBundle:），并传递参数（withObject:self withObject:frameworkBundle）</span><br><span class="line"></span><br><span class="line">  NSObject *pacteraObject = [pacteraClass new];</span><br><span class="line">  [pacteraObject performSelector:@selector(startWithObject:withBundle:) withObject:self withObject:frameworkBundle];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>将动态库生成的DynamicLibrary.Framework动态库文件导入到主工程运行下的Documents文件下；</p>
 </li>
@@ -133,7 +133,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/动态库加载/">动态库加载</a><a href="/tags/JSPath/">JSPath</a><a href="/tags/Hybrid/">Hybrid</a>
+  <span></span> <a href="/tags/Hybrid/">Hybrid</a><a href="/tags/动态库加载/">动态库加载</a><a href="/tags/JSPath/">JSPath</a>
   </div>
 
 
@@ -208,6 +208,8 @@
 		
 			<li><a href="/tags/MarkDown/" title="MarkDown">MarkDown<sup>1</sup></a></li>
 		
+			<li><a href="/tags/NSString/" title="NSString">NSString<sup>1</sup></a></li>
+		
 			<li><a href="/tags/Native/" title="Native">Native<sup>3</sup></a></li>
 		
 			<li><a href="/tags/React/" title="React">React<sup>2</sup></a></li>
@@ -216,22 +218,28 @@
 		
 			<li><a href="/tags/git命令/" title="git命令">git命令<sup>1</sup></a></li>
 		
-			<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
+			<li><a href="/tags/iOS/" title="iOS">iOS<sup>4</sup></a></li>
+		
+			<li><a href="/tags/iOS9更新问题/" title="iOS9更新问题">iOS9更新问题<sup>1</sup></a></li>
 		
 			<li><a href="/tags/动态库加载/" title="动态库加载">动态库加载<sup>1</sup></a></li>
 		
 			<li><a href="/tags/基础框架/" title="基础框架">基础框架<sup>1</sup></a></li>
 		
-			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
+			<li><a href="/tags/开发账号/" title="开发账号">开发账号<sup>1</sup></a></li>
 		
-			<li><a href="/tags/网络框架/" title="网络框架">网络框架<sup>1</sup></a></li>
+			<li><a href="/tags/成员变量/" title="成员变量">成员变量<sup>1</sup></a></li>
+		
+			<li><a href="/tags/方法/" title="方法">方法<sup>1</sup></a></li>
+		
+			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
 		
 		</ul>
 </div>
 
 
   <div class="rsspart">
-	<a href="http://www.weibo.com/2661020721/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" title="rss">RSS 订阅</a>
+	<a href="http://weibo.com/niefuling" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>

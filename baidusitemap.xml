@@ -3,6 +3,78 @@
 
 
     
+  <url>
+    <loc>http://yoursite.com/2015/10/14/Xcode7%E5%8F%8AiOS9%E6%9B%B4%E6%96%B0%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2016-07-01T07:17:52.000Z</lastmod>
+    <data>
+        <display>
+        <title>Xcode7及iOS9更新遇到的一些问题</title>
+        <pubTime>2015-10-14T07:07:30.000Z</pubTime>
+        
+        <tag>iOS9更新问题</tag>
+         
+        <tag>iOS</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2015/08/09/%E8%8B%B9%E6%9E%9C%E6%9C%89%E5%9B%9B%E7%A7%8D%E5%BC%80%E5%8F%91%E5%B8%90%E5%8F%B7/</loc>
+    <lastmod>2016-07-01T06:48:25.000Z</lastmod>
+    <data>
+        <display>
+        <title>苹果有四种开发帐号</title>
+        <pubTime>2015-08-09T06:22:19.000Z</pubTime>
+        
+        <tag>开发账号</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2014/08/14/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2016-07-01T04:11:09.000Z</lastmod>
+    <data>
+        <display>
+        <title>字符串基本操作</title>
+        <pubTime>2014-08-14T04:08:33.000Z</pubTime>
+        
+        <tag>NSString</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2014/08/09/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%8F%AF%E8%A7%81%E5%BA%A6%E4%B8%8E%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2016-06-30T10:38:02.000Z</lastmod>
+    <data>
+        <display>
+        <title>成员变量可见度与方法-定义分数(Fraction)类</title>
+        <pubTime>2014-08-09T10:16:39.000Z</pubTime>
+        
+        <tag>成员变量</tag>
+         
+        <tag>方法</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
     
     
   <url>
@@ -107,11 +179,11 @@
         <title>iOS开发－动态库加载（实时模块更新）</title>
         <pubTime>2016-03-22T03:47:56.000Z</pubTime>
         
+        <tag>Hybrid</tag>
+         
         <tag>动态库加载</tag>
          
         <tag>JSPath</tag>
-         
-        <tag>Hybrid</tag>
          
          
            

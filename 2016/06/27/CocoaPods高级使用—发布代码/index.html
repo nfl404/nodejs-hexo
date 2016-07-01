@@ -15,18 +15,18 @@
 
 
 将工程clone（克隆）到本地
-1git clone git@github.com:nfl404/NJAFNetworking.git
+git clone git@github.com:nfl404/NJAFNetworking.git
 
 NJAFNetworking文件目录
 
 
 
-用X">
+用Xc">
     
     
     
     
-    <link rel="alternate" href="http://www.weibo.com/2661020721/profile?topnav=1&wvr=6&is_all=1" title="NiePlus博客" type="application/atom+xml">
+    <link rel="alternate" href="http://weibo.com/niefuling" title="NiePlus博客" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon.ico">
@@ -101,7 +101,7 @@ NJAFNetworking文件目录
 <p><img src="http://upload-images.jianshu.io/upload_images/1290061-6563f6b9c2a88b74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="github上初始化工程.png"></p>
 <ul>
 <li><p>将工程clone（克隆）到本地</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:nfl404/NJAFNetworking.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:nfl404/NJAFNetworking.git</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>NJAFNetworking文件目录</p>
 </li>
@@ -121,13 +121,13 @@ NJAFNetworking文件目录
 <p><img src="http://upload-images.jianshu.io/upload_images/1290061-c68411e93643aeee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="使用trunk原理流程.png"></p>
 <ul>
 <li><p>注册使用trunk</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk register 785558516@qq.com <span class="string">'nieplus'</span> --verbose</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pod trunk register 785558516@qq.com <span class="string">'nieplus'</span> --verbose</span><br></pre></td></tr></table></figure>
 <ul>
 <li>注释：–verbose参数是为了便于输出注册过程中的调试信息。执行上面的语句后，验证邮箱收到的邮件即可。</li>
 </ul>
 </li>
 <li><p>查询trunk注册信息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk me</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pod trunk me</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><img src="http://upload-images.jianshu.io/upload_images/1290061-7760717f3d0c43e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="trunk注册信息.png"></p>
@@ -137,7 +137,7 @@ NJAFNetworking文件目录
 <p><img src="http://upload-images.jianshu.io/upload_images/1290061-57b45df0815ca20a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="NJAFNetworking文件目录.png"></p>
 <ul>
 <li><p>生成PodSpec文件（NJAFNetworking.podspec）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod spec create NJAFNetworking</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pod spec create NJAFNetworking</span><br></pre></td></tr></table></figure>
 <ul>
 <li>注释：NJAFNetworking文件为在CocoaPods上发布的文件名。</li>
 </ul>
@@ -147,19 +147,19 @@ NJAFNetworking文件目录
 <ul>
 <li><p>配置PodSpec文件（NJAFNetworking.podspec）</p>
 <p>编辑NJAFNetworking.podspec文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim NJAFNetworking.podspec</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim NJAFNetworking.podspec</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>NJAFNetworking.podspec可以按照以下模板配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">        Pod::Spec.new <span class="keyword">do</span> |s|</span><br><span class="line">            </span><br><span class="line">        s.name         = <span class="string">"NJAFNetworking"</span></span><br><span class="line">        s.version      = <span class="string">"1.0.2"</span></span><br><span class="line">        s.summary      = <span class="string">"基于AFNetworking框架的简单封装，POST请求，GET请求，上传文件，下载文件等。"</span></span><br><span class="line">        s.homepage     = <span class="string">"https://niefuling.com/"</span></span><br><span class="line">        s.license      = <span class="string">"MIT"</span></span><br><span class="line">        s.author       = &#123; <span class="string">"niefuling"</span> =&gt; <span class="string">"785558516@qq.com"</span> &#125;</span><br><span class="line">        s.platform     = :ios, <span class="string">"7.0"</span></span><br><span class="line">        s.source       = &#123; :git =&gt; <span class="string">"https://github.com/nfl404/NJAFNetworking.git"</span>, :tag =&gt; <span class="string">"1.0.2"</span> &#125;</span><br><span class="line">        s.source_files  = <span class="string">"NJAFNetworking"</span>, <span class="string">"*.&#123;h,m&#125;"</span></span><br><span class="line">        s.requires_arc = <span class="literal">true</span></span><br><span class="line">        s.dependency <span class="string">"AFNetworking"</span>, <span class="string">"~&gt; 3.1.0"</span></span><br><span class="line">        </span><br><span class="line">        end</span><br></pre></td></tr></table></figure></p>
+<p>NJAFNetworking.podspec可以按照以下模板配置<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">        Pod::Spec.new <span class="keyword">do</span> |s|</span><br><span class="line">            </span><br><span class="line">        s.name         = <span class="string">"NJAFNetworking"</span></span><br><span class="line">        s.version      = <span class="string">"1.0.2"</span></span><br><span class="line">        s.summary      = <span class="string">"基于AFNetworking框架的简单封装，POST请求，GET请求，上传文件，下载文件等。"</span></span><br><span class="line">        s.homepage     = <span class="string">"https://niefuling.com/"</span></span><br><span class="line">        s.license      = <span class="string">"MIT"</span></span><br><span class="line">        s.author       = &#123; <span class="string">"niefuling"</span> =&gt; <span class="string">"785558516@qq.com"</span> &#125;</span><br><span class="line">        s.platform     = :ios, <span class="string">"7.0"</span></span><br><span class="line">        s.source       = &#123; :git =&gt; <span class="string">"https://github.com/nfl404/NJAFNetworking.git"</span>, :tag =&gt; <span class="string">"1.0.2"</span> &#125;</span><br><span class="line">        s.source_files  = <span class="string">"NJAFNetworking"</span>, <span class="string">"*.&#123;h,m&#125;"</span></span><br><span class="line">        s.requires_arc = <span class="literal">true</span></span><br><span class="line">        s.dependency <span class="string">"AFNetworking"</span>, <span class="string">"~&gt; 3.1.0"</span></span><br><span class="line">        </span><br><span class="line">        end</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>注释：name:CocoaPods上显示搜索的名字；version：版本号；summary：CocoaPods上显示的描述信息；homepage：个人主页链接；license：github初始化工程添加的license文件；author：作者联系信息；platform:支持的环境版本号；source：下载地址；source_files：上传的文件夹（指NJAFNetworking文件夹下的所有.h与.m文件）；requires_arc：默认true；dependency：引用其他的第三方库。</li>
 </ul>
 <ul>
 <li><p>将文件提交到github上</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">' 初始化文件'</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">' 初始化文件'</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>检验文件是否正确</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod lib lint</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pod lib lint</span><br></pre></td></tr></table></figure>
 <ul>
 <li>注释：在pod lib lint 后面加上–verbose后可以得出更详细的信息，然后根据提示修改警告或者错误文件，这一步会有很对坑，请仔细修改错误，否者无法成功。</li>
 </ul>
@@ -169,11 +169,11 @@ NJAFNetworking文件目录
 <ul>
 <li><p>将文件发布到CocoaPods上</p>
 <p> 创建分支(这里的分支与下面的tag是匹配的，一个分之匹配一个tag)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch 1.0.2</span><br><span class="line">git push origin 1.0.2</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git branch 1.0.2</span><br><span class="line">git push origin 1.0.2</span><br></pre></td></tr></table></figure>
 <p> 创建tag（这里的tag值是对应NJAFNetworking.podspec中的版本号，两者必须保持一致）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git tag <span class="string">'1.0.2'</span></span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git tag <span class="string">'1.0.2'</span></span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
 <p>   将文件发布到CocoaPods上（成功后，可以通过pod search 搜索你上传的文件了）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk push NJAFNetworking.podspec</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pod trunk push NJAFNetworking.podspec</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>结束。</p>
@@ -268,6 +268,8 @@ NJAFNetworking文件目录
 		
 			<li><a href="/tags/MarkDown/" title="MarkDown">MarkDown<sup>1</sup></a></li>
 		
+			<li><a href="/tags/NSString/" title="NSString">NSString<sup>1</sup></a></li>
+		
 			<li><a href="/tags/Native/" title="Native">Native<sup>3</sup></a></li>
 		
 			<li><a href="/tags/React/" title="React">React<sup>2</sup></a></li>
@@ -276,22 +278,28 @@ NJAFNetworking文件目录
 		
 			<li><a href="/tags/git命令/" title="git命令">git命令<sup>1</sup></a></li>
 		
-			<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
+			<li><a href="/tags/iOS/" title="iOS">iOS<sup>4</sup></a></li>
+		
+			<li><a href="/tags/iOS9更新问题/" title="iOS9更新问题">iOS9更新问题<sup>1</sup></a></li>
 		
 			<li><a href="/tags/动态库加载/" title="动态库加载">动态库加载<sup>1</sup></a></li>
 		
 			<li><a href="/tags/基础框架/" title="基础框架">基础框架<sup>1</sup></a></li>
 		
-			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
+			<li><a href="/tags/开发账号/" title="开发账号">开发账号<sup>1</sup></a></li>
 		
-			<li><a href="/tags/网络框架/" title="网络框架">网络框架<sup>1</sup></a></li>
+			<li><a href="/tags/成员变量/" title="成员变量">成员变量<sup>1</sup></a></li>
+		
+			<li><a href="/tags/方法/" title="方法">方法<sup>1</sup></a></li>
+		
+			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
 		
 		</ul>
 </div>
 
 
   <div class="rsspart">
-	<a href="http://www.weibo.com/2661020721/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" title="rss">RSS 订阅</a>
+	<a href="http://weibo.com/niefuling" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>

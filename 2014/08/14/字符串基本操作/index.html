@@ -1,0 +1,357 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>字符串基本操作 | NiePlus博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Plus Nie">
+    
+    <meta name="description" content="///字符串基本操作 // 1.初始化方法NSString *str1 = [[NSStringalloc]initWithFormat:@&amp;quot;这是第%d个字符串&amp;quot;,1];NSLog(@&amp;quot;%@&amp;quot;, str1);NSString *str2 =[[NSString">
+    
+    
+    
+    
+    <link rel="alternate" href="http://weibo.com/niefuling" title="NiePlus博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="NiePlus博客">NiePlus博客</a></h1>
+				<h2 class="blog-motto">不经一番彻寒骨，怎得梅花扑鼻香！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/08/14/字符串基本操作/" title="字符串基本操作" itemprop="url">字符串基本操作</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="Plus Nie">Plus Nie</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-08-14T04:08:33.000Z" itemprop="datePublished">2014-08-14</time>
+    更新日期:<time datetime="2016-07-01T04:11:09.000Z" itemprop="dateModified">2016-07-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+		</div>
+		
+		<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> ///字符串基本操作</span><br><span class="line"> // 1.初始化方法</span><br><span class="line">NSString *str1 = [[NSStringalloc]initWithFormat:@&quot;这是第%d个字符串&quot;,1];</span><br><span class="line">NSLog(@&quot;%@&quot;, str1);</span><br><span class="line">NSString *str2 =[[NSStringalloc]initWithString:str1];</span><br><span class="line">NSLog(@&quot;%@&quot;, str2);</span><br><span class="line"> // 2.便利构造器</span><br><span class="line">NSString *str3 = [NSStringstringWithFormat:@&quot;这是第%d个字符串&quot;,2];</span><br><span class="line">NSLog(@&quot;%@&quot;,str3);</span><br><span class="line"></span><br><span class="line">NSString *str4 = [NSStringstringWithString:str3];</span><br><span class="line">NSLog(@&quot;%@&quot;,str4);</span><br><span class="line"> // 3. 获取字符串长度</span><br><span class="line">NSLog(@&quot;%ld&quot;,[str2length]);</span><br><span class="line"></span><br><span class="line"> // 4.1 判断字符串是否包含某个前缀</span><br><span class="line"></span><br><span class="line">if ([str2hasPrefix:@&quot;这是&quot;]) &#123;</span><br><span class="line">    NSLog(@&quot;%@包含前缀&apos;这是&apos;&quot;,str2);</span><br><span class="line"> &#125;</span><br><span class="line">if ([str2hasPrefix:@&quot;这是第&quot;]) &#123;</span><br><span class="line">    NSLog(@&quot;%@包含前缀&apos;这是第&apos;&quot;, str2);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> // 4.2 判断字符串是否包含某个后缀</span><br><span class="line">if ([str2hasSuffix:@&quot;符串&quot;]) &#123;</span><br><span class="line">    NSLog(@&quot;%@包含后缀&apos;符串&apos;&quot;, str2);</span><br><span class="line"> &#125;</span><br><span class="line">if ([str2hasSuffix:@&quot;字符串&quot;]) &#123;</span><br><span class="line">    NSLog(@&quot;%@包含后缀&apos;字符串&apos;&quot;, str2);</span><br><span class="line"> &#125;</span><br><span class="line"> // 5. 判断子串在一个字符串中的范围</span><br><span class="line">NSRange range = [str2rangeOfString:@&quot;是第&quot;];</span><br><span class="line"> NSLog(@&quot;location: %lu length: %lu&quot;, range.location, range.length);</span><br><span class="line"> NSLog(@&quot;%lu&quot;,NSNotFound);</span><br><span class="line">if (range.length ==0) &#123;</span><br><span class="line">    NSLog(@&quot;字符串不包含&quot;);</span><br><span class="line"> &#125;else &#123;</span><br><span class="line">    NSLog(@&quot;包含该字符串&quot;);</span><br><span class="line"> &#125;</span><br><span class="line"> // 6. 字符串截取</span><br><span class="line"> // 6.1 截取前面部分</span><br><span class="line">NSLog(@&quot;%@&quot;, [str2substringToIndex:3]);</span><br><span class="line"> // 6.2 截取后边部分</span><br><span class="line"> NSLog(@&quot;%@&quot;, [str2substringFromIndex:3]);</span><br><span class="line"> // 6.3 截取中间部分</span><br><span class="line">NSRange range3 =NSMakeRange(1,2);</span><br><span class="line">NSLog(@&quot;%@&quot;, [str2substringWithRange:range3]);</span><br><span class="line"> //  7. 拼接字符串</span><br><span class="line"> NSLog(@&quot;%@&quot;, [str1stringByAppendingString:str2]);</span><br><span class="line"> //  8. 替换字符串</span><br><span class="line"> NSLog(@&quot;%@&quot;, [str1stringByReplacingOccurrencesOfString:@&quot;是&quot;withString:@&quot;不是&quot;]);</span><br><span class="line"> //  9. 字符串比较</span><br><span class="line">if ([str1isEqualToString:str2]) &#123;</span><br><span class="line">    NSLog(@&quot;两个字符串相同&quot;);</span><br><span class="line"> &#125;else &#123;</span><br><span class="line">    NSLog(@&quot;两个字符串不想同&quot;);</span><br><span class="line"> &#125;</span><br><span class="line">NSLog(@&quot;%ld&quot;, [@&quot;A&quot;compare:@&quot;B&quot;]);</span><br><span class="line">NSLog(@&quot;%ld&quot;, [@&quot;A&quot;compare:@&quot;A&quot;]);</span><br><span class="line">NSLog(@&quot;%ld&quot;, [@&quot;AA&quot;compare:@&quot;AB&quot;]);</span><br><span class="line">NSLog(@&quot;%ld&quot;, [@&quot;B&quot;compare:@&quot;A&quot;]);</span><br><span class="line">NSLog(@&quot;%ld&quot;, [@&quot;C&quot;compare:@&quot;A&quot;]);</span><br><span class="line">NSLog(@&quot;%d&quot;, [str1isEqualToString:str2]);//相等为1,不等为0</span><br><span class="line"> // 10. 字符串和数值类型转换</span><br><span class="line"> // 10.1 字符串转数值</span><br><span class="line"> NSLog(@&quot;%d&quot;, [[NSStringstringWithFormat:@&quot;123&quot;]intValue]);</span><br><span class="line"> // 10.2 数值转字符串</span><br><span class="line"> NSLog(@&quot;%@&quot;,  [NSStringstringWithFormat:@&quot;%d&quot;,234]);</span><br><span class="line"> // 11. 大小写转换操作</span><br><span class="line">NSString *string = [NSStringstringWithFormat:@&quot;hsdfasfASDF&quot;];</span><br><span class="line">NSLog(@&quot;%@&quot;, [stringuppercaseString]);</span><br><span class="line">NSLog(@&quot;%@&quot;, [stringlowercaseString]);</span><br><span class="line">NSLog(@&quot;%@&quot;, [stringcapitalizedString]);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> /* NSMutableString 可变字符串 */</span><br><span class="line"> NSMutableString *mString1 = [NSMutableStringstringWithFormat:@&quot;这是第%d个可变字符串&quot;,1];</span><br><span class="line"> // 1.拼接字符串</span><br><span class="line">NSString *st1 = [[NSStringalloc]initWithFormat:@&quot;str1&quot;];</span><br><span class="line">NSString *st2 = [str1stringByAppendingString:@&quot;str2&quot;];</span><br><span class="line">NSLog(@&quot;%p\n%@&quot;, st1, st2);</span><br><span class="line">NSLog(@&quot;%p&quot;, st2);</span><br><span class="line">NSLog(@&quot;%p&quot;, mString1);</span><br><span class="line"> [mString1appendString:@&quot;str3&quot;];</span><br><span class="line">NSLog(@&quot;%p&quot;, mString1);</span><br><span class="line">NSLog(@&quot;%@&quot;, mString1);</span><br><span class="line"></span><br><span class="line"> // 2.插入字符</span><br><span class="line"> [mString1insertString:@&quot;aaaa&quot;atIndex:2];</span><br><span class="line">NSLog(@&quot;%@&quot;, mString1);</span><br><span class="line"> // 3.删除字符串</span><br><span class="line"> [mString1 deleteCharactersInRange:NSMakeRange(2,2)];</span><br><span class="line">NSLog(@&quot;%@&quot;, mString1);</span><br><span class="line"></span><br><span class="line"> // 4.替换字符</span><br><span class="line"> [mString1 replaceCharactersInRange:NSMakeRange(2,2)withString:@&quot;我们写的&quot;];</span><br><span class="line">NSLog(@&quot;%@&quot;, mString1);</span><br></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/NSString/">NSString</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2014/08/14/字符串基本操作/" data-title="字符串基本操作 | NiePlus博客" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/08/09/苹果有四种开发帐号/" title="苹果有四种开发帐号">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  苹果有四种开发帐号</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/08/09/成员变量可见度与方法/"  title="成员变量可见度与方法-定义分数(Fraction)类">
+ <strong>NEXT:</strong><br/> 
+ <span>成员变量可见度与方法-定义分数(Fraction)类
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/AFNetworking/" title="AFNetworking">AFNetworking<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CocoaPods/" title="CocoaPods">CocoaPods<sup>4</sup></a></li>
+		
+			<li><a href="/tags/CocoaPods问题/" title="CocoaPods问题">CocoaPods问题<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Hybrid/" title="Hybrid">Hybrid<sup>2</sup></a></li>
+		
+			<li><a href="/tags/JSPath/" title="JSPath">JSPath<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MarkDown/" title="MarkDown">MarkDown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NSString/" title="NSString">NSString<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Native/" title="Native">Native<sup>3</sup></a></li>
+		
+			<li><a href="/tags/React/" title="React">React<sup>2</sup></a></li>
+		
+			<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git命令/" title="git命令">git命令<sup>1</sup></a></li>
+		
+			<li><a href="/tags/iOS/" title="iOS">iOS<sup>4</sup></a></li>
+		
+			<li><a href="/tags/iOS9更新问题/" title="iOS9更新问题">iOS9更新问题<sup>1</sup></a></li>
+		
+			<li><a href="/tags/动态库加载/" title="动态库加载">动态库加载<sup>1</sup></a></li>
+		
+			<li><a href="/tags/基础框架/" title="基础框架">基础框架<sup>1</sup></a></li>
+		
+			<li><a href="/tags/开发账号/" title="开发账号">开发账号<sup>1</sup></a></li>
+		
+			<li><a href="/tags/成员变量/" title="成员变量">成员变量<sup>1</sup></a></li>
+		
+			<li><a href="/tags/方法/" title="方法">方法<sup>1</sup></a></li>
+		
+			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="http://weibo.com/niefuling" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://yoursite.com" target="_blank" title="Plus Nie">Plus Nie</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"null"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79655948-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>

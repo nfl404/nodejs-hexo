@@ -9,12 +9,12 @@
     
     <meta name="author" content="Plus Nie">
     
-    <meta name="description" content="今天创建项目时，兴奋的使用CocoaPods导入第三方框架，Shit！pod search 根本没有反应！想到是否gem版本低需要升级，于是便1234laoniede-MacBook-Pro:~ xuxianmei$ sudo gem update -systemERROR:  While exec">
+    <meta name="description" content="今天创建项目时，兴奋的使用CocoaPods导入第三方框架，Shit！pod search 根本没有反应！想到是否gem版本低需要升级，于是便laoniede-MacBook-Pro:~ xuxianmei$ sudo gem update -systemERROR:  While executin">
     
     
     
     
-    <link rel="alternate" href="http://www.weibo.com/2661020721/profile?topnav=1&wvr=6&is_all=1" title="NiePlus博客" type="application/atom+xml">
+    <link rel="alternate" href="http://weibo.com/niefuling" title="NiePlus博客" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon.ico">
@@ -83,11 +83,11 @@
 		
 		</div>
 		
-		<p>今天创建项目时，兴奋的使用CocoaPods导入第三方框架，Shit！pod search 根本没有反应！想到是否gem版本低需要升级，于是便<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">laoniede-MacBook-Pro:~ xuxianmei$ sudo gem update -system</span><br><span class="line">ERROR:  While executing gem ... (OptionParser::AmbiguousOption)</span><br><span class="line">    ambiguous option: -system</span><br><span class="line">laoniede-MacBook-Pro:~ xuxianmei$</span><br></pre></td></tr></table></figure></p>
+		<p>今天创建项目时，兴奋的使用CocoaPods导入第三方框架，Shit！pod search 根本没有反应！想到是否gem版本低需要升级，于是便<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">laoniede-MacBook-Pro:~ xuxianmei$ sudo gem update -system</span><br><span class="line">ERROR:  While executing gem ... (OptionParser::AmbiguousOption)</span><br><span class="line">    ambiguous option: -system</span><br><span class="line">laoniede-MacBook-Pro:~ xuxianmei$</span><br></pre></td></tr></table></figure></p>
 <p>只能fuck了！Google后发现有人说镜像改成了<a href="https://gems.ruby-china.rog/" target="_blank" rel="external">https://gems.ruby-china.rog/</a> ，所以把镜像换了重新安转了下Cocoapods。安转中….等待安装结果中。</p>
 <p>亲测，安装成功后，可以使用。一些同事用的是ruby.taobo.org/镜像，可以正常使用，为什么镜像换成gems.ruby-china.org/还没有找到原因。</p>
-<p>原因可能是因为系统升级10.11，可尝试<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install -n /user/<span class="built_in">local</span>/bin cocoapods</span><br></pre></td></tr></table></figure></p>
-<p>未亲测，遇到提示od:command not found 可以尝试下。<br>如果pod update / pod install卡在Updating local specs repositories,可执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod install --verbose --no-repo-update</span><br></pre></td></tr></table></figure></p>
+<p>原因可能是因为系统升级10.11，可尝试<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo gem install -n /user/<span class="built_in">local</span>/bin cocoapods</span><br></pre></td></tr></table></figure></p>
+<p>未亲测，遇到提示od:command not found 可以尝试下。<br>如果pod update / pod install卡在Updating local specs repositories,可执行<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pod install --verbose --no-repo-update</span><br></pre></td></tr></table></figure></p>
 <p>结束。</p>
   
 	</div>
@@ -170,6 +170,8 @@
 		
 			<li><a href="/tags/MarkDown/" title="MarkDown">MarkDown<sup>1</sup></a></li>
 		
+			<li><a href="/tags/NSString/" title="NSString">NSString<sup>1</sup></a></li>
+		
 			<li><a href="/tags/Native/" title="Native">Native<sup>3</sup></a></li>
 		
 			<li><a href="/tags/React/" title="React">React<sup>2</sup></a></li>
@@ -178,22 +180,28 @@
 		
 			<li><a href="/tags/git命令/" title="git命令">git命令<sup>1</sup></a></li>
 		
-			<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
+			<li><a href="/tags/iOS/" title="iOS">iOS<sup>4</sup></a></li>
+		
+			<li><a href="/tags/iOS9更新问题/" title="iOS9更新问题">iOS9更新问题<sup>1</sup></a></li>
 		
 			<li><a href="/tags/动态库加载/" title="动态库加载">动态库加载<sup>1</sup></a></li>
 		
 			<li><a href="/tags/基础框架/" title="基础框架">基础框架<sup>1</sup></a></li>
 		
-			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
+			<li><a href="/tags/开发账号/" title="开发账号">开发账号<sup>1</sup></a></li>
 		
-			<li><a href="/tags/网络框架/" title="网络框架">网络框架<sup>1</sup></a></li>
+			<li><a href="/tags/成员变量/" title="成员变量">成员变量<sup>1</sup></a></li>
+		
+			<li><a href="/tags/方法/" title="方法">方法<sup>1</sup></a></li>
+		
+			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
 		
 		</ul>
 </div>
 
 
   <div class="rsspart">
-	<a href="http://www.weibo.com/2661020721/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" title="rss">RSS 订阅</a>
+	<a href="http://weibo.com/niefuling" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>

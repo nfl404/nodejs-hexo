@@ -12,15 +12,15 @@
     <meta name="description" content="为了在开发中更好的管理第三方库文件而生！CocoaPods能帮助在项目开发迭代中，让第三方库文件更新变的更加简单！
 安装CocoPods
 移除ruby的源地址
-1gem sources –remove https://rubygems.org/
+gem sources –remove https://rubygems.org/
 
 查看ruby的原地址
-1gem sources -a">
+gem sources -a h">
     
     
     
     
-    <link rel="alternate" href="http://www.weibo.com/2661020721/profile?topnav=1&wvr=6&is_all=1" title="NiePlus博客" type="application/atom+xml">
+    <link rel="alternate" href="http://weibo.com/niefuling" title="NiePlus博客" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon.ico">
@@ -92,40 +92,40 @@
 		<p><img src="http://upload-images.jianshu.io/upload_images/1290061-879b1ca32c1c393d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="工具.jpg"><br>为了在开发中更好的管理第三方库文件而生！CocoaPods能帮助在项目开发迭代中，让第三方库文件更新变的更加简单！</p>
 <h3 id="安装CocoPods"><a href="#安装CocoPods" class="headerlink" title="安装CocoPods"></a>安装CocoPods</h3><ul>
 <li><p>移除ruby的源地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem sources –remove https://rubygems.org/</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gem sources –remove https://rubygems.org/</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看ruby的原地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem sources <span class="_">-a</span> https://ruby.taobao.org/</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gem sources <span class="_">-a</span> https://ruby.taobao.org/</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看ruby的源地址：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem sources <span class="_">-l</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gem sources <span class="_">-l</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装CocoaPods</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install cocoapods</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo gem install cocoapods</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>如果提示gem版本过低，需要升级gem</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem update -system 或 sudo gem install cocoapods</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo gem update -system 或 sudo gem install cocoapods</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>测试CocoaPods安装是否成功</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod search afnetworking</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pod search afnetworking</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>使用CocoaPods倒入第三方库文件导入我们的工程中，你会发现一切都是多么的不可思议！</p>
 <h3 id="使用CocoaPods："><a href="#使用CocoaPods：" class="headerlink" title="使用CocoaPods："></a>使用CocoaPods：</h3><ul>
 <li><p>使用命令行cd进入以创建好的工程目录中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>／你的工程目录</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span>／你的工程目录</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>创建名为Podfile的文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim Podfile</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim Podfile</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在Podfile中写入你想要添加的第三方类库，可以使用pod search＊去搜索你想要的第三方类库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod ‘JSONKit’，‘~&gt;1.5pre’</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pod ‘JSONKit’，‘~&gt;1.5pre’</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>保存Podfile文件，并推出（按Esc键之后保存退出）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">：wq</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">：wq</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装第三方类库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod install 或pod install –verbose –no-repo-update 或pod update –verbose –no-repo-update</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pod install 或pod install –verbose –no-repo-update 或pod update –verbose –no-repo-update</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>如果pod install长时间无响应，尝试第2种或第3种，原因是执行pod install或pod update命令时回升级CocoaPods的spec 仓库，加上参数会省略升级，很提高很快的速度。</p>
@@ -210,6 +210,8 @@
 		
 			<li><a href="/tags/MarkDown/" title="MarkDown">MarkDown<sup>1</sup></a></li>
 		
+			<li><a href="/tags/NSString/" title="NSString">NSString<sup>1</sup></a></li>
+		
 			<li><a href="/tags/Native/" title="Native">Native<sup>3</sup></a></li>
 		
 			<li><a href="/tags/React/" title="React">React<sup>2</sup></a></li>
@@ -218,22 +220,28 @@
 		
 			<li><a href="/tags/git命令/" title="git命令">git命令<sup>1</sup></a></li>
 		
-			<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
+			<li><a href="/tags/iOS/" title="iOS">iOS<sup>4</sup></a></li>
+		
+			<li><a href="/tags/iOS9更新问题/" title="iOS9更新问题">iOS9更新问题<sup>1</sup></a></li>
 		
 			<li><a href="/tags/动态库加载/" title="动态库加载">动态库加载<sup>1</sup></a></li>
 		
 			<li><a href="/tags/基础框架/" title="基础框架">基础框架<sup>1</sup></a></li>
 		
-			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
+			<li><a href="/tags/开发账号/" title="开发账号">开发账号<sup>1</sup></a></li>
 		
-			<li><a href="/tags/网络框架/" title="网络框架">网络框架<sup>1</sup></a></li>
+			<li><a href="/tags/成员变量/" title="成员变量">成员变量<sup>1</sup></a></li>
+		
+			<li><a href="/tags/方法/" title="方法">方法<sup>1</sup></a></li>
+		
+			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
 		
 		</ul>
 </div>
 
 
   <div class="rsspart">
-	<a href="http://www.weibo.com/2661020721/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" title="rss">RSS 订阅</a>
+	<a href="http://weibo.com/niefuling" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>

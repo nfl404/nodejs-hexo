@@ -9,14 +9,14 @@
     
     <meta name="author" content="Plus Nie">
     
-    <meta name="description" content="问题描述执行gem sources -remove https://ruby.taobao.org/,提示1source emove not present in cache
-解决办法，执行1gem sources --remove https://ruby.taobao.org/
-在更新Cocoa">
+    <meta name="description" content="问题描述执行gem sources -remove https://ruby.taobao.org/,提示source emove not present in cache
+解决办法，执行gem sources --remove https://ruby.taobao.org/
+在更新Cocoapo">
     
     
     
     
-    <link rel="alternate" href="http://www.weibo.com/2661020721/profile?topnav=1&wvr=6&is_all=1" title="NiePlus博客" type="application/atom+xml">
+    <link rel="alternate" href="http://weibo.com/niefuling" title="NiePlus博客" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon.ico">
@@ -85,29 +85,29 @@
 		
 		</div>
 		
-		<p>问题描述执行gem sources -remove <a href="https://ruby.taobao.org/,提示" target="_blank" rel="external">https://ruby.taobao.org/,提示</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> emove not present <span class="keyword">in</span> cache</span><br></pre></td></tr></table></figure></p>
-<p>解决办法，执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem sources --remove https://ruby.taobao.org/</span><br></pre></td></tr></table></figure></p>
+		<p>问题描述执行gem sources -remove <a href="https://ruby.taobao.org/,提示" target="_blank" rel="external">https://ruby.taobao.org/,提示</a><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> emove not present <span class="keyword">in</span> cache</span><br></pre></td></tr></table></figure></p>
+<p>解决办法，执行<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gem sources --remove https://ruby.taobao.org/</span><br></pre></td></tr></table></figure></p>
 <p>在更新Cocoapods时遇到的一些问题：</p>
 <ul>
 <li>问题1：You don’t have write permissions for the /Library/Ruby/Gems/2.0.0 directory.</li>
 </ul>
-<p>目录权限不够，解决方案<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 777 /Library/Ruby/Gems/2.0.0</span><br></pre></td></tr></table></figure></p>
+<p>目录权限不够，解决方案<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo chmod 777 /Library/Ruby/Gems/2.0.0</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>问题2：Permission denied - /Library/Ruby/Gems/2.0.0/cache/rubygems-update-2.6.4.gem</li>
 </ul>
-<p>gem版本较低，更新gem<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem update --system</span><br></pre></td></tr></table></figure></p>
+<p>gem版本较低，更新gem<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gem update --system</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>问题3：更新后还是不行，执行</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install cocoapods</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo gem install cocoapods</span><br></pre></td></tr></table></figure>
 <ul>
 <li>问题4：Operation not permitted - /usr/bin/xcodeproj</li>
 </ul>
-<p>解决方案，<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install -n /usr/<span class="built_in">local</span>/bin cocoapods</span><br></pre></td></tr></table></figure></p>
+<p>解决方案，<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo gem install -n /usr/<span class="built_in">local</span>/bin cocoapods</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>问题5：pod install 时，提示[!] The dependency <code>AFNetworking (= 2.5.0)</code> is not used in any concrete target.</li>
 </ul>
-<p>解决方案，官方给出这样的格式来更新加载第三方<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">platform :ios, <span class="string">'8.0'</span></span><br><span class="line">use_frameworks!</span><br><span class="line"></span><br><span class="line">target <span class="string">'MyApp'</span> <span class="keyword">do</span></span><br><span class="line">  pod <span class="string">'AFNetworking'</span>, <span class="string">'~&gt; 2.6'</span></span><br><span class="line">  pod <span class="string">'ORStackView'</span>, <span class="string">'~&gt; 3.0'</span></span><br><span class="line">  pod <span class="string">'SwiftyJSON'</span>, <span class="string">'~&gt; 2.3'</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
+<p>解决方案，官方给出这样的格式来更新加载第三方<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">platform :ios, <span class="string">'8.0'</span></span><br><span class="line">use_frameworks!</span><br><span class="line"></span><br><span class="line">target <span class="string">'MyApp'</span> <span class="keyword">do</span></span><br><span class="line">  pod <span class="string">'AFNetworking'</span>, <span class="string">'~&gt; 2.6'</span></span><br><span class="line">  pod <span class="string">'ORStackView'</span>, <span class="string">'~&gt; 3.0'</span></span><br><span class="line">  pod <span class="string">'SwiftyJSON'</span>, <span class="string">'~&gt; 2.3'</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -189,6 +189,8 @@
 		
 			<li><a href="/tags/MarkDown/" title="MarkDown">MarkDown<sup>1</sup></a></li>
 		
+			<li><a href="/tags/NSString/" title="NSString">NSString<sup>1</sup></a></li>
+		
 			<li><a href="/tags/Native/" title="Native">Native<sup>3</sup></a></li>
 		
 			<li><a href="/tags/React/" title="React">React<sup>2</sup></a></li>
@@ -197,22 +199,28 @@
 		
 			<li><a href="/tags/git命令/" title="git命令">git命令<sup>1</sup></a></li>
 		
-			<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
+			<li><a href="/tags/iOS/" title="iOS">iOS<sup>4</sup></a></li>
+		
+			<li><a href="/tags/iOS9更新问题/" title="iOS9更新问题">iOS9更新问题<sup>1</sup></a></li>
 		
 			<li><a href="/tags/动态库加载/" title="动态库加载">动态库加载<sup>1</sup></a></li>
 		
 			<li><a href="/tags/基础框架/" title="基础框架">基础框架<sup>1</sup></a></li>
 		
-			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
+			<li><a href="/tags/开发账号/" title="开发账号">开发账号<sup>1</sup></a></li>
 		
-			<li><a href="/tags/网络框架/" title="网络框架">网络框架<sup>1</sup></a></li>
+			<li><a href="/tags/成员变量/" title="成员变量">成员变量<sup>1</sup></a></li>
+		
+			<li><a href="/tags/方法/" title="方法">方法<sup>1</sup></a></li>
+		
+			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
 		
 		</ul>
 </div>
 
 
   <div class="rsspart">
-	<a href="http://www.weibo.com/2661020721/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" title="rss">RSS 订阅</a>
+	<a href="http://weibo.com/niefuling" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>

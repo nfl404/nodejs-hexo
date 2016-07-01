@@ -19,7 +19,7 @@ OS X：目前只有OS X中能够安转使用iOS的开发环境，并且Xcode 也
     
     
     
-    <link rel="alternate" href="http://www.weibo.com/2661020721/profile?topnav=1&wvr=6&is_all=1" title="NiePlus博客" type="application/atom+xml">
+    <link rel="alternate" href="http://weibo.com/niefuling" title="NiePlus博客" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon.ico">
@@ -116,16 +116,16 @@ OS X：目前只有OS X中能够安转使用iOS的开发环境，并且Xcode 也
 <li>目前你的项目使用CocoaPods来管理依赖和库；</li>
 <li>你想要将React Native框架添加到一个现有的项目中。</li>
 </ul>
-<p>如果你还没有安装CocoaPods，运行下面这个来安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install cocoapods</span><br></pre></td></tr></table></figure></p>
-<p>注意，你需要提前安转Ruby来使用gem命令。<br>根据React Native官网最新的说明，它用io.js来取代了node.js。让我们按照官网的指导来进行io.js的安装和配置。如果之前安装过node.js，则先运行命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew unlink node</span><br></pre></td></tr></table></figure></p>
-<p>这样可以完成node的解绑。然后运行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install iojs</span><br><span class="line">brew link iojs - -force</span><br></pre></td></tr></table></figure></p>
+<p>如果你还没有安装CocoaPods，运行下面这个来安装：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo gem install cocoapods</span><br></pre></td></tr></table></figure></p>
+<p>注意，你需要提前安转Ruby来使用gem命令。<br>根据React Native官网最新的说明，它用io.js来取代了node.js。让我们按照官网的指导来进行io.js的安装和配置。如果之前安装过node.js，则先运行命令：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew unlink node</span><br></pre></td></tr></table></figure></p>
+<p>这样可以完成node的解绑。然后运行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install iojs</span><br><span class="line">brew link iojs - -force</span><br></pre></td></tr></table></figure></p>
 <p>进行io.js的安装和配置。<br>现在我们已经准备好使用CocoaPods了，使用CocoaPods来安装React Native吧。</p>
 <ul>
 <li>进入到所见iOS应用的文件目录，建立一个文件，命名为Podfile。在使用CocoaPods安装React Native时，Podfile相当于一个配置文件，它告诉安装程序需要下载安装哪些内容。</li>
-<li>在Podfile中添加如下的内容。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pod <span class="string">'React'</span></span><br><span class="line">pod <span class="string">'React/RCTText'</span></span><br></pre></td></tr></table></figure>
+<li>在Podfile中添加如下的内容。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pod <span class="string">'React'</span></span><br><span class="line">pod <span class="string">'React/RCTText'</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>然后在终端执行一下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod install</span><br></pre></td></tr></table></figure></p>
+<p>然后在终端执行一下命令：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pod install</span><br></pre></td></tr></table></figure></p>
 <p>至此，你已经成功安装了React Native。</p>
   
 	</div>
@@ -208,6 +208,8 @@ OS X：目前只有OS X中能够安转使用iOS的开发环境，并且Xcode 也
 		
 			<li><a href="/tags/MarkDown/" title="MarkDown">MarkDown<sup>1</sup></a></li>
 		
+			<li><a href="/tags/NSString/" title="NSString">NSString<sup>1</sup></a></li>
+		
 			<li><a href="/tags/Native/" title="Native">Native<sup>3</sup></a></li>
 		
 			<li><a href="/tags/React/" title="React">React<sup>2</sup></a></li>
@@ -216,22 +218,28 @@ OS X：目前只有OS X中能够安转使用iOS的开发环境，并且Xcode 也
 		
 			<li><a href="/tags/git命令/" title="git命令">git命令<sup>1</sup></a></li>
 		
-			<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
+			<li><a href="/tags/iOS/" title="iOS">iOS<sup>4</sup></a></li>
+		
+			<li><a href="/tags/iOS9更新问题/" title="iOS9更新问题">iOS9更新问题<sup>1</sup></a></li>
 		
 			<li><a href="/tags/动态库加载/" title="动态库加载">动态库加载<sup>1</sup></a></li>
 		
 			<li><a href="/tags/基础框架/" title="基础框架">基础框架<sup>1</sup></a></li>
 		
-			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
+			<li><a href="/tags/开发账号/" title="开发账号">开发账号<sup>1</sup></a></li>
 		
-			<li><a href="/tags/网络框架/" title="网络框架">网络框架<sup>1</sup></a></li>
+			<li><a href="/tags/成员变量/" title="成员变量">成员变量<sup>1</sup></a></li>
+		
+			<li><a href="/tags/方法/" title="方法">方法<sup>1</sup></a></li>
+		
+			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
 		
 		</ul>
 </div>
 
 
   <div class="rsspart">
-	<a href="http://www.weibo.com/2661020721/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank" title="rss">RSS 订阅</a>
+	<a href="http://weibo.com/niefuling" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>
