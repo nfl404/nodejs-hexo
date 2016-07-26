@@ -1,0 +1,381 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS-HTML交互学习笔记（五）-HTML中调用API | NiePlus博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Plus Nie">
+    
+    <meta name="description" content="HTML调用iOS中的API，实现原理是通过桥接的方式，下面我们就简单的实现html是怎样与iOS桥接。补充一点，通过这一原理让iOS与HTML实现交互的开源框架已经有很多，比如Facebook开源的React-Native，Hbuilder等。
+目标实现
+点击webView中的图片，调用系统相册
+">
+    
+    
+    
+    
+    <link rel="alternate" href="http://weibo.com/niefuling" title="NiePlus博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="NiePlus博客">NiePlus博客</a></h1>
+				<h2 class="blog-motto">不经一番彻寒骨，怎得梅花扑鼻香！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/02/19/iOS-HTML交互学习笔记（五）-HTML中调用API/" title="iOS-HTML交互学习笔记（五）-HTML中调用API" itemprop="url">iOS-HTML交互学习笔记（五）-HTML中调用API</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="Plus Nie">Plus Nie</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-02-19T10:04:44.000Z" itemprop="datePublished">2016-02-19</time>
+    更新日期:<time datetime="2016-07-26T10:12:50.000Z" itemprop="dateModified">2016-07-26</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目标实现"><span class="toc-number">1.</span> <span class="toc-text">目标实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现原理"><span class="toc-number">2.</span> <span class="toc-text">实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体步骤"><span class="toc-number">3.</span> <span class="toc-text">具体步骤</span></a></li></ol>
+		</div>
+		
+		<p>HTML调用iOS中的API，实现原理是通过桥接的方式，下面我们就简单的实现html是怎样与iOS桥接。补充一点，通过这一原理让iOS与HTML实现交互的开源框架已经有很多，比如Facebook开源的React-Native，Hbuilder等。</p>
+<h2 id="目标实现"><a href="#目标实现" class="headerlink" title="目标实现"></a>目标实现</h2><ul>
+<li>点击webView中的图片，调用系统相册</li>
+</ul>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><ul>
+<li>通过js文件实现桥接方式</li>
+</ul>
+<h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><ul>
+<li>桥接文件实现</li>
+</ul>
+<p>创建newsDetail.js文件，文件实现如下，<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    window.onload = function()&#123;</span><br><span class="line">        // 拿到所有的图片</span><br><span class="line">        var allImg = document.getElementsByTagName(&quot;img&quot;);</span><br><span class="line">        // 遍历</span><br><span class="line">        for(var i= 0; i&lt;allImg.length;i++) &#123;</span><br><span class="line">            // 取出单个图片对象</span><br><span class="line">            var img = allImg[i];</span><br><span class="line">            img.id = i;</span><br><span class="line">            // 监听点击</span><br><span class="line">            img.onclick = function()&#123;</span><br><span class="line">                // 约定的操作</span><br><span class="line">                window.location.href = &apos;xmg:///openCamera&apos;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>加载newsDetail.js文件</li>
+</ul>
+<p>加载newsDetail.js的url路径，创建jsHtml标签，<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    // 加载js的url路径</span><br><span class="line">    let js = NSBundle.mainBundle().URLForResource(&quot;newsDetail&quot;, withExtension: &quot;js&quot;);</span><br><span class="line">    // 创建html标签</span><br><span class="line">    let jsHtml = &quot;&lt;script src=\&quot;\(js!)\&quot;&gt;&lt;/script&gt;&quot;</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">    // 拼接HTML</span><br><span class="line">    let html = &quot;&lt;html&gt;&lt;head&gt;\(cssHtml)&lt;/head&gt;&lt;body&gt;\(titleHtml)\(subTitleHtml)\(bodyHtml)\(jsHtml)&lt;/body&gt;&lt;/html&gt;&quot;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>实现webView的代理方法</li>
+</ul>
+<p>webView的代理实现，对接newsDetail.js桥链接，<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    // webView的代理方法</span><br><span class="line">    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -&gt; Bool &#123;</span><br><span class="line">        // 1.取出请求字符串</span><br><span class="line">        let requestString: NSString = (request.URL?.absoluteString)!;</span><br><span class="line">        //        print(requestString!);</span><br><span class="line">        // 2.判断处理</span><br><span class="line">        let URLHeader = &quot;xmg:///&quot;;</span><br><span class="line">        let range = requestString.rangeOfString(URLHeader);</span><br><span class="line">        let location = range.location;</span><br><span class="line">        if (location != NSNotFound) &#123; // 包含了协议头</span><br><span class="line">            // 取出要操作的方法名称</span><br><span class="line">            let method = requestString.substringFromIndex(range.length);</span><br><span class="line">            //            print(method);</span><br><span class="line">            // 包装成SEL</span><br><span class="line">            let sel = NSSelectorFromString(method);</span><br><span class="line">            // 执行</span><br><span class="line">            self.performSelector(sel);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>访问系统相册，<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    // 访问相册</span><br><span class="line">    func openCamera() -&gt; Void &#123;</span><br><span class="line">        let photoVC = UIImagePickerController();</span><br><span class="line">        photoVC.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;</span><br><span class="line">        // 模态出来</span><br><span class="line">        self.presentViewController(photoVC, animated: true, completion: nil);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行效果如下，即成功。<br><img src="http://upload-images.jianshu.io/upload_images/1290061-f2ea8d33fd9b7dbd.gif?imageMogr2/auto-orient/strip" alt="2016-07-19 18_08_35.gif"></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Hybrid/">Hybrid</a><a href="/tags/iOS-html交互/">iOS-html交互</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2016/02/19/iOS-HTML交互学习笔记（五）-HTML中调用API/" data-title="iOS-HTML交互学习笔记（五）-HTML中调用API | NiePlus博客" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/02/20/iOS-HTML交互学习笔记（六）-往网页中添加内容/" title="iOS-HTML交互学习笔记（六）-往网页中添加内容">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  iOS-HTML交互学习笔记（六）-往网页中添加内容</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/02/18/iOS-HTML交互学习笔记（二）-显示body中的内容/"  title="iOS-HTML交互学习笔记（二）-显示body中的内容">
+ <strong>NEXT:</strong><br/> 
+ <span>iOS-HTML交互学习笔记（二）-显示body中的内容
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目标实现"><span class="toc-number">1.</span> <span class="toc-text">目标实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现原理"><span class="toc-number">2.</span> <span class="toc-text">实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体步骤"><span class="toc-number">3.</span> <span class="toc-text">具体步骤</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/AFNetworking/" title="AFNetworking">AFNetworking<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CocoaPods/" title="CocoaPods">CocoaPods<sup>4</sup></a></li>
+		
+			<li><a href="/tags/CocoaPods问题/" title="CocoaPods问题">CocoaPods问题<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Hybrid/" title="Hybrid">Hybrid<sup>8</sup></a></li>
+		
+			<li><a href="/tags/JSPath/" title="JSPath">JSPath<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MarkDown/" title="MarkDown">MarkDown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NSString/" title="NSString">NSString<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Native/" title="Native">Native<sup>3</sup></a></li>
+		
+			<li><a href="/tags/React/" title="React">React<sup>2</sup></a></li>
+		
+			<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git命令/" title="git命令">git命令<sup>1</sup></a></li>
+		
+			<li><a href="/tags/iOS/" title="iOS">iOS<sup>4</sup></a></li>
+		
+			<li><a href="/tags/iOS-html交互/" title="iOS-html交互">iOS-html交互<sup>6</sup></a></li>
+		
+			<li><a href="/tags/iOS9更新问题/" title="iOS9更新问题">iOS9更新问题<sup>1</sup></a></li>
+		
+			<li><a href="/tags/动态库加载/" title="动态库加载">动态库加载<sup>1</sup></a></li>
+		
+			<li><a href="/tags/基础框架/" title="基础框架">基础框架<sup>1</sup></a></li>
+		
+			<li><a href="/tags/开发账号/" title="开发账号">开发账号<sup>1</sup></a></li>
+		
+			<li><a href="/tags/成员变量/" title="成员变量">成员变量<sup>1</sup></a></li>
+		
+			<li><a href="/tags/方法/" title="方法">方法<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="http://weibo.com/niefuling" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://yoursite.com" target="_blank" title="Plus Nie">Plus Nie</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"null"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79655948-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,360 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS-HTML交互学习笔记（三）-拼接标题和图片放入webView中 | NiePlus博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Plus Nie">
+    
+    <meta name="description" content="在添加完body信息后，现在我们把标题和图片放入webView,    override func viewDidLoad() &amp;#123;        super.viewDidLoad()                // http://c.m.163.com/nc/article/BSB3">
+    
+    
+    
+    
+    <link rel="alternate" href="http://weibo.com/niefuling" title="NiePlus博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="NiePlus博客">NiePlus博客</a></h1>
+				<h2 class="blog-motto">不经一番彻寒骨，怎得梅花扑鼻香！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/02/17/iOS-HTML交互学习笔记（三）-拼接标题和图片放入webView中/" title="iOS-HTML交互学习笔记（三）-拼接标题和图片放入webView中" itemprop="url">iOS-HTML交互学习笔记（三）-拼接标题和图片放入webView中</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="Plus Nie">Plus Nie</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-02-17T10:04:06.000Z" itemprop="datePublished">2016-02-17</time>
+    更新日期:<time datetime="2016-07-26T10:11:08.000Z" itemprop="dateModified">2016-07-26</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+		</div>
+		
+		<p>在添加完body信息后，现在我们把标题和图片放入webView,<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">    override func viewDidLoad() &#123;</span><br><span class="line">        super.viewDidLoad()</span><br><span class="line">        </span><br><span class="line">        // http://c.m.163.com/nc/article/BSB33M1000234KO7/full.html</span><br><span class="line">        // 1.设置url</span><br><span class="line">        let url = NSURL(string: &quot;http://c.m.163.com/nc/article/BSB33M1000234KO7/full.html&quot;);</span><br><span class="line">        // 2.设置请求</span><br><span class="line">        let request = NSURLRequest(URL: url!);</span><br><span class="line">        </span><br><span class="line">        // 3.开启异步请求操作</span><br><span class="line">        let dataTask = NSURLSession.sharedSession().dataTaskWithRequest(request) &#123; (data, response, error) in</span><br><span class="line">            if (error == nil)&#123;</span><br><span class="line">                // 转为json数据，try？ 解决throws异常， as！强制转换</span><br><span class="line">                let jsonData = try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary;</span><br><span class="line">                self.dealNewsDetail(jsonData!);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // 4.开启请求</span><br><span class="line">        dataTask.resume();</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">     // 处理拿到的数据并显示</span><br><span class="line">    func dealNewsDetail(jsonData: NSDictionary) -&gt; Void &#123;</span><br><span class="line">        // 1.取出所有内容</span><br><span class="line">        let allData = jsonData[&quot;BSB33M1000234KO7&quot;];</span><br><span class="line">        </span><br><span class="line">        // 2.取出body中的内容</span><br><span class="line">        var bodyHtml = allData![&quot;body&quot;] as! String;</span><br><span class="line">        </span><br><span class="line">        // 3.取出标题</span><br><span class="line">        let title = allData![&quot;title&quot;] as! String;</span><br><span class="line">        </span><br><span class="line">        // 4.取出发布时间</span><br><span class="line">        let ptime = allData![&quot;ptime&quot;] as! String;</span><br><span class="line">        </span><br><span class="line">        // 5.取出来源</span><br><span class="line">        let source = allData![&quot;source&quot;] as! String;</span><br><span class="line">        </span><br><span class="line">        // 6.取出所有图片对象</span><br><span class="line">        let img = allData![&quot;img&quot;] as! [[String: AnyObject]];</span><br><span class="line">        </span><br><span class="line">        // 7.遍历</span><br><span class="line">        for i in 0..&lt;img.count &#123;</span><br><span class="line">            // 7.1取出单独的图片对象</span><br><span class="line">            let imgItem = img[i];</span><br><span class="line">            </span><br><span class="line">            // 7.2取出站位标签</span><br><span class="line">            let ref = imgItem[&quot;ref&quot;] as! String;</span><br><span class="line">            </span><br><span class="line">            // 7.3取出图片标题</span><br><span class="line">            let imgTitle = imgItem[&quot;alt&quot;] as! String;</span><br><span class="line">            </span><br><span class="line">            // 7.4取出src</span><br><span class="line">            let src = imgItem[&quot;src&quot;] as! String;</span><br><span class="line">            let imgHtml = &quot;&lt;div&gt;&lt;img src=\&quot;\(src)\&quot;&gt;&lt;div&gt;\(imgTitle)&lt;/div&gt;&lt;/div&gt;&quot;</span><br><span class="line">            </span><br><span class="line">            // 7.5替换body中的图片占位符</span><br><span class="line">            bodyHtml = bodyHtml.stringByReplacingOccurrencesOfString(ref, withString: imgHtml)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // 创建标题HTML标签</span><br><span class="line">        let titleHtml = &quot;&lt;div&gt;\(title)&lt;/div&gt;&quot;;</span><br><span class="line">        </span><br><span class="line">        // 创建子标题html标签</span><br><span class="line">        let subTitleHtml = &quot;&lt;div&gt;&lt;span&gt;\(ptime)&lt;/span&gt;&lt;span&gt;\(source)&lt;/span&gt;&lt;/div&gt;&quot;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        // 拼接HTML</span><br><span class="line">        let html = &quot;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;\(titleHtml)\(subTitleHtml)\(bodyHtml)&lt;/body&gt;&lt;/html&gt;&quot;</span><br><span class="line">        </span><br><span class="line">        // 把对应的内容显示daowebView中</span><br><span class="line">        webview.loadHTMLString(html, baseURL: nil);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行模拟器，观察效果，图片和标题都已经加入，但是图片适配有些问题，请看下一章：iOS-HTML交互学习笔记（四）-添加全局的CSS样式</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1290061-47aa6dcf6a5bf86a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="运行效果.png"></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Hybrid/">Hybrid</a><a href="/tags/iOS-html交互/">iOS-html交互</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2016/02/17/iOS-HTML交互学习笔记（三）-拼接标题和图片放入webView中/" data-title="iOS-HTML交互学习笔记（三）-拼接标题和图片放入webView中 | NiePlus博客" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/02/18/iOS-HTML交互学习笔记（二）-显示body中的内容/" title="iOS-HTML交互学习笔记（二）-显示body中的内容">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  iOS-HTML交互学习笔记（二）-显示body中的内容</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/02/16/iOS-HTML交互学习笔记（一）-内容概述/"  title="iOS-HTML交互学习笔记（一）-内容概述">
+ <strong>NEXT:</strong><br/> 
+ <span>iOS-HTML交互学习笔记（一）-内容概述
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/AFNetworking/" title="AFNetworking">AFNetworking<sup>1</sup></a></li>
+		
+			<li><a href="/tags/CocoaPods/" title="CocoaPods">CocoaPods<sup>4</sup></a></li>
+		
+			<li><a href="/tags/CocoaPods问题/" title="CocoaPods问题">CocoaPods问题<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Hybrid/" title="Hybrid">Hybrid<sup>8</sup></a></li>
+		
+			<li><a href="/tags/JSPath/" title="JSPath">JSPath<sup>1</sup></a></li>
+		
+			<li><a href="/tags/MarkDown/" title="MarkDown">MarkDown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/NSString/" title="NSString">NSString<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Native/" title="Native">Native<sup>3</sup></a></li>
+		
+			<li><a href="/tags/React/" title="React">React<sup>2</sup></a></li>
+		
+			<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git命令/" title="git命令">git命令<sup>1</sup></a></li>
+		
+			<li><a href="/tags/iOS/" title="iOS">iOS<sup>4</sup></a></li>
+		
+			<li><a href="/tags/iOS-html交互/" title="iOS-html交互">iOS-html交互<sup>6</sup></a></li>
+		
+			<li><a href="/tags/iOS9更新问题/" title="iOS9更新问题">iOS9更新问题<sup>1</sup></a></li>
+		
+			<li><a href="/tags/动态库加载/" title="动态库加载">动态库加载<sup>1</sup></a></li>
+		
+			<li><a href="/tags/基础框架/" title="基础框架">基础框架<sup>1</sup></a></li>
+		
+			<li><a href="/tags/开发账号/" title="开发账号">开发账号<sup>1</sup></a></li>
+		
+			<li><a href="/tags/成员变量/" title="成员变量">成员变量<sup>1</sup></a></li>
+		
+			<li><a href="/tags/方法/" title="方法">方法<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="http://weibo.com/niefuling" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://yoursite.com" target="_blank" title="Plus Nie">Plus Nie</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"null"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-79655948-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>

@@ -73,7 +73,7 @@
     </p>
   <p class="article-time">
     <time datetime="2015-10-14T07:07:30.000Z" itemprop="datePublished">2015-10-14</time>
-    更新日期:<time datetime="2016-07-01T07:17:52.000Z" itemprop="dateModified">2016-07-01</time>
+    更新日期:<time datetime="2016-07-04T03:16:27.000Z" itemprop="dateModified">2016-07-04</time>
     
   </p>
 </header>
@@ -82,10 +82,11 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题1-Xcode7-网络请求报错"><span class="toc-number">1.</span> <span class="toc-text">问题1:Xcode7 网络请求报错</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题1-Xcode7-网络请求报错"><span class="toc-number">1.</span> <span class="toc-text">问题1:Xcode7 网络请求报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题2-BITCODE"><span class="toc-number">2.</span> <span class="toc-text">问题2:BITCODE</span></a></li></ol>
 		</div>
 		
-		<h3 id="问题1-Xcode7-网络请求报错"><a href="#问题1-Xcode7-网络请求报错" class="headerlink" title="问题1:Xcode7 网络请求报错"></a>问题1:Xcode7 网络请求报错</h3><ul>
+		<p><img src="http://upload-images.jianshu.io/upload_images/1290061-5e43ad1c91531c85.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS9.jpg"></p>
+<h3 id="问题1-Xcode7-网络请求报错"><a href="#问题1-Xcode7-网络请求报错" class="headerlink" title="问题1:Xcode7 网络请求报错"></a>问题1:Xcode7 网络请求报错</h3><ul>
 <li><p>提示内容如下</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;span style=<span class="string">"font-size:18px;"</span>&gt;</span><br><span class="line">The resource could not be loaded because the App Transport Security policy requires&lt;/span&gt;</span><br></pre></td></tr></table></figure>
 </li>
@@ -94,13 +95,22 @@
 <li><p>解决办法<br>在Info.plist中添加NSAppTransportSecurity类型Dictionary。<br>在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES</p>
 </li>
 </ul>
+<h3 id="问题2-BITCODE"><a href="#问题2-BITCODE" class="headerlink" title="问题2:BITCODE"></a>问题2:BITCODE</h3><ul>
+<li><p>真机调试提示错误信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="string">'xxx文件'</span> does not contain bitcode. You must rebuild it with bitcode enabled</span><br><span class="line"> (Xcode setting ENABLE_BITCODE), obtain an updated library from the vendor,</span><br><span class="line">  or <span class="built_in">disable</span> bitcode <span class="keyword">for</span> this target. <span class="keyword">for</span> architecture arm64。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>问题原因<br>原因是不支持第三方库，工程中开启了 ENABLE_BITCODE （应该是升级之后自动转换的），而这个第三方的库在编译的时候没有 enable bitcode，所以导致上诉问题。</p>
+</li>
+<li><p>解决办法<br>第一种：更新第三方库文件（个人建议更新第三方库文件，一定要先第三方文档是否更新适配最新iOS版本，避免引入新的问题）。<br>第二种：如图TARFETS-&gt;Build Settings-&gt;搜索bitcode，修改Enable Bitcode 值为No；<br><img src="http://upload-images.jianshu.io/upload_images/1290061-0cf724a2304fb65d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bitcode.jpg"></p>
+</li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/iOS9更新问题/">iOS9更新问题</a><a href="/tags/iOS/">iOS</a>
+  <span></span> <a href="/tags/iOS/">iOS</a><a href="/tags/iOS9更新问题/">iOS9更新问题</a>
   </div>
 
 
@@ -118,10 +128,10 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/03/17/iOS开发－Git命令的简单操作/" title="iOS开发－Git命令的简单操作">
+ <a href="/2016/02/16/iOS-HTML交互学习笔记（一）-内容概述/" title="iOS-HTML交互学习笔记（一）-内容概述">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  iOS开发－Git命令的简单操作</span>
+  iOS-HTML交互学习笔记（一）-内容概述</span>
 </a>
 </div>
 
@@ -147,7 +157,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题1-Xcode7-网络请求报错"><span class="toc-number">1.</span> <span class="toc-text">问题1:Xcode7 网络请求报错</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题1-Xcode7-网络请求报错"><span class="toc-number">1.</span> <span class="toc-text">问题1:Xcode7 网络请求报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题2-BITCODE"><span class="toc-number">2.</span> <span class="toc-text">问题2:BITCODE</span></a></li></ol>
   </div>
 
 <div id="asidepart">
@@ -169,7 +179,7 @@
 		
 			<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Hybrid/" title="Hybrid">Hybrid<sup>2</sup></a></li>
+			<li><a href="/tags/Hybrid/" title="Hybrid">Hybrid<sup>8</sup></a></li>
 		
 			<li><a href="/tags/JSPath/" title="JSPath">JSPath<sup>1</sup></a></li>
 		
@@ -187,6 +197,8 @@
 		
 			<li><a href="/tags/iOS/" title="iOS">iOS<sup>4</sup></a></li>
 		
+			<li><a href="/tags/iOS-html交互/" title="iOS-html交互">iOS-html交互<sup>6</sup></a></li>
+		
 			<li><a href="/tags/iOS9更新问题/" title="iOS9更新问题">iOS9更新问题<sup>1</sup></a></li>
 		
 			<li><a href="/tags/动态库加载/" title="动态库加载">动态库加载<sup>1</sup></a></li>
@@ -198,8 +210,6 @@
 			<li><a href="/tags/成员变量/" title="成员变量">成员变量<sup>1</sup></a></li>
 		
 			<li><a href="/tags/方法/" title="方法">方法<sup>1</sup></a></li>
-		
-			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
 		
 		</ul>
 </div>

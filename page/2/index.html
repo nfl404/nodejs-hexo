@@ -154,68 +154,90 @@ git s</p>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2015/10/14/Xcode7及iOS9更新遇到的一些问题/" title="Xcode7及iOS9更新遇到的一些问题" itemprop="url">
+    <a href="/2016/02/23/iOS-HTML交互学习笔记（四）-添加全局的CSS样式/" title="iOS-HTML交互学习笔记（四）-添加全局的CSS样式" itemprop="url">
   
-    <h1 itemprop="name">Xcode7及iOS9更新遇到的一些问题</h1>
+    <h1 itemprop="name">iOS-HTML交互学习笔记（四）-添加全局的CSS样式</h1>
     
      
-           <p itemprop="description" >问题1:Xcode7 网络请求报错
-提示内容如下
-&amp;lt;span style=&quot;font-size:18px;&quot;&amp;gt;The resource could not be loaded because the App Transport Security policy requ</p>
+           <p itemprop="description" >接下来，我们要适配图片，创建CSS文件。创建文件-&amp;gt;iOS-&amp;gt;Other-&amp;gt;Empty，命名为newsDetail.css，如图,
+
+在css文件中为图片加上约束，如下图，img&amp;#123;        width:100%;&amp;#125;
+
+接下来，加载css</p>
         
     
-    <time datetime="2015-10-14T07:07:30.000Z" itemprop="datePublished">2015-10-14</time>
+    <time datetime="2016-02-23T10:04:29.000Z" itemprop="datePublished">2016-02-23</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2015/08/09/苹果有四种开发帐号/" title="苹果有四种开发帐号" itemprop="url">
+    <a href="/2016/02/20/iOS-HTML交互学习笔记（六）-往网页中添加内容/" title="iOS-HTML交互学习笔记（六）-往网页中添加内容" itemprop="url">
   
-    <h1 itemprop="name">苹果有四种开发帐号</h1>
+    <h1 itemprop="name">iOS-HTML交互学习笔记（六）-往网页中添加内容</h1>
     
      
-           <p itemprop="description" >苹果有四种开发帐号：
-个人帐号（Individual）
-费用99美金一年, 该账号在App Store销售者只能显示个人的ID，比如yufeng zhang，单人使用。个人账号只能有一个开发者。100个苹果的iOS设备UDID测试；
-可以发布app store 应用，以公司名义；</p>
+           <p itemprop="description" >实现目标
+在webView中添加内容，如：在webView的底部添加图片
+
+实现方案（两种方式）
+通过webView代理
+
+通过webView代理方法webViewDidFinishLoad来实现，实现原理通过JavaScript来实现，比较少用    func webViewD</p>
         
     
-    <time datetime="2015-08-09T06:22:19.000Z" itemprop="datePublished">2015-08-09</time>
+    <time datetime="2016-02-20T10:05:09.000Z" itemprop="datePublished">2016-02-20</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2014/08/14/字符串基本操作/" title="字符串基本操作" itemprop="url">
+    <a href="/2016/02/19/iOS-HTML交互学习笔记（五）-HTML中调用API/" title="iOS-HTML交互学习笔记（五）-HTML中调用API" itemprop="url">
   
-    <h1 itemprop="name">字符串基本操作</h1>
+    <h1 itemprop="name">iOS-HTML交互学习笔记（五）-HTML中调用API</h1>
     
      
-           <p itemprop="description" >///字符串基本操作 // 1.初始化方法NSString *str1 = [[NSStringalloc]initWithFormat:@&amp;quot;这是第%d个字符串&amp;quot;,1];NSLog(@&amp;quot;%@&amp;quot;, str1);NSString *str2 =</p>
+           <p itemprop="description" >HTML调用iOS中的API，实现原理是通过桥接的方式，下面我们就简单的实现html是怎样与iOS桥接。补充一点，通过这一原理让iOS与HTML实现交互的开源框架已经有很多，比如Facebook开源的React-Native，Hbuilder等。
+目标实现
+点击webView中的</p>
         
     
-    <time datetime="2014-08-14T04:08:33.000Z" itemprop="datePublished">2014-08-14</time>
+    <time datetime="2016-02-19T10:04:44.000Z" itemprop="datePublished">2016-02-19</time>
   </a>
 </section>
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2014/08/09/成员变量可见度与方法/" title="成员变量可见度与方法-定义分数(Fraction)类" itemprop="url">
+    <a href="/2016/02/18/iOS-HTML交互学习笔记（二）-显示body中的内容/" title="iOS-HTML交互学习笔记（二）-显示body中的内容" itemprop="url">
   
-    <h1 itemprop="name">成员变量可见度与方法-定义分数(Fraction)类</h1>
+    <h1 itemprop="name">iOS-HTML交互学习笔记（二）-显示body中的内容</h1>
     
      
-           <p itemprop="description" >定义分数（Fraction）类：成员变量：分子、分母#import &amp;lt;Foundation/Foundation.h&amp;gt;@interface Fraction :NSObject&amp;#123;   NSInteger _numerator;   NSInteger _de</p>
+           <p itemprop="description" >通过上一篇文章我们已经分析过了数据，那么现在将要实现详情页面的信息展示。以下我们以Swift方式编码。
+创建工程 创建工程，命名iOS-html-part1，因为要访问数据，在TARGETS-&amp;gt;Info-Custom iOS Target Progerties 添加App </p>
         
     
-    <time datetime="2014-08-09T10:16:39.000Z" itemprop="datePublished">2014-08-09</time>
+    <time datetime="2016-02-18T10:03:45.000Z" itemprop="datePublished">2016-02-18</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2016/02/17/iOS-HTML交互学习笔记（三）-拼接标题和图片放入webView中/" title="iOS-HTML交互学习笔记（三）-拼接标题和图片放入webView中" itemprop="url">
+  
+    <h1 itemprop="name">iOS-HTML交互学习笔记（三）-拼接标题和图片放入webView中</h1>
+    
+     
+           <p itemprop="description" >在添加完body信息后，现在我们把标题和图片放入webView,    override func viewDidLoad() &amp;#123;        super.viewDidLoad()                // http://c.m.163.com/nc/ar</p>
+        
+    
+    <time datetime="2016-02-17T10:04:06.000Z" itemprop="datePublished">2016-02-17</time>
   </a>
 </section>
 
 
   <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </div>
@@ -240,7 +262,7 @@ git s</p>
 		
 			<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
 		
-			<li><a href="/tags/Hybrid/" title="Hybrid">Hybrid<sup>2</sup></a></li>
+			<li><a href="/tags/Hybrid/" title="Hybrid">Hybrid<sup>8</sup></a></li>
 		
 			<li><a href="/tags/JSPath/" title="JSPath">JSPath<sup>1</sup></a></li>
 		
@@ -258,6 +280,8 @@ git s</p>
 		
 			<li><a href="/tags/iOS/" title="iOS">iOS<sup>4</sup></a></li>
 		
+			<li><a href="/tags/iOS-html交互/" title="iOS-html交互">iOS-html交互<sup>6</sup></a></li>
+		
 			<li><a href="/tags/iOS9更新问题/" title="iOS9更新问题">iOS9更新问题<sup>1</sup></a></li>
 		
 			<li><a href="/tags/动态库加载/" title="动态库加载">动态库加载<sup>1</sup></a></li>
@@ -269,8 +293,6 @@ git s</p>
 			<li><a href="/tags/成员变量/" title="成员变量">成员变量<sup>1</sup></a></li>
 		
 			<li><a href="/tags/方法/" title="方法">方法<sup>1</sup></a></li>
-		
-			<li><a href="/tags/真机调试问题/" title="真机调试问题">真机调试问题<sup>2</sup></a></li>
 		
 		</ul>
 </div>
